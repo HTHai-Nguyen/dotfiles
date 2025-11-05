@@ -1,0 +1,8 @@
+# Aliases for Fedora (dnf_
+alias update="sudo dnf update -y"
+alias upgrade="sudo dnf upgrade -y"
+alias install="sudo dnf install -y"
+alias uninstall="sudo dnf remove -y"
+alias remove="sudo dnf remove -y"
+alias search="dnf search"
+

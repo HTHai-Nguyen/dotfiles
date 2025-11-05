@@ -1,0 +1,151 @@
+{
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "D:\\Application\\Scoop\\buckets\\main",
+            "Updated": "2025-10-23T00:43:10.9739784+07:00",
+            "Manifests": 1406
+        },
+        {
+            "Name": "extras",
+            "Source": "D:\\Application\\Scoop\\buckets\\extras",
+            "Updated": "2025-10-23T00:43:11.170141+07:00",
+            "Manifests": 2204
+        }
+    ],
+    "apps": [
+        {
+            "Updated": "2024-11-20T10:57:40.1794987+07:00",
+            "Source": "main",
+            "Version": "24.08",
+            "Info": "",
+            "Name": "7zip"
+        },
+        {
+            "Updated": "2025-10-15T11:32:28.0674504+07:00",
+            "Source": "main",
+            "Version": "0.25.0",
+            "Info": "",
+            "Name": "bat"
+        },
+        {
+            "Updated": "2025-10-23T00:43:16.0432279+07:00",
+            "Source": "main",
+            "Version": "0.23.4",
+            "Info": "",
+            "Name": "eza"
+        },
+        {
+            "Updated": "2023-11-30T18:31:11.2701712+07:00",
+            "Source": "extras",
+            "Version": "1.16.2",
+            "Info": "",
+            "Name": "flow-launcher"
+        },
+        {
+            "Updated": "2024-11-20T10:58:36.3696171+07:00",
+            "Source": "main",
+            "Version": "0.56.3",
+            "Info": "",
+            "Name": "fzf"
+        },
+        {
+            "Updated": "2023-10-24T01:10:23.665129+07:00",
+            "Source": "main",
+            "Version": "2.4.0",
+            "Info": "",
+            "Name": "gsudo"
+        },
+        {
+            "Updated": "2024-11-20T11:07:16.7605011+07:00",
+            "Source": "main",
+            "Version": "5.4.7-2",
+            "Info": "",
+            "Name": "lua"
+        },
+        {
+            "Updated": "2024-11-20T11:22:05.0895653+07:00",
+            "Source": "main",
+            "Version": "5.1.5-52",
+            "Info": "",
+            "Name": "lua-for-windows"
+        },
+        {
+            "Updated": "2024-11-20T11:07:18.3030848+07:00",
+            "Source": "main",
+            "Version": "3.11.1",
+            "Info": "",
+            "Name": "luarocks"
+        },
+        {
+            "Updated": "2024-11-20T11:01:00.0929528+07:00",
+            "Source": "main",
+            "Version": "14.2.0-rt_v12-rev0",
+            "Info": "",
+            "Name": "mingw"
+        },
+        {
+            "Updated": "2024-11-20T11:03:19.3945514+07:00",
+            "Source": "main",
+            "Version": "2024-11-16",
+            "Info": "",
+            "Name": "msys2"
+        },
+        {
+            "Updated": "2025-10-15T11:07:29.4813073+07:00",
+            "Source": "main",
+            "Version": "0.11.4",
+            "Info": "",
+            "Name": "neovim"
+        },
+        {
+            "Updated": "2024-11-20T11:20:48.1804983+07:00",
+            "Source": "main",
+            "Version": "23.2.0",
+            "Info": "",
+            "Name": "nodejs"
+        },
+        {
+            "Updated": "2024-11-20T10:57:57.199968+07:00",
+            "Source": "main",
+            "Version": "24.6.4",
+            "Info": "",
+            "Name": "oh-my-posh"
+        },
+        {
+            "Updated": "2024-11-20T11:12:40.1232755+07:00",
+            "Source": "main",
+            "Version": "3.13.0",
+            "Info": "",
+            "Name": "python"
+        },
+        {
+            "Updated": "2024-11-20T10:37:23.3771156+07:00",
+            "Source": "main",
+            "Version": "14.1.1",
+            "Info": "",
+            "Name": "ripgrep"
+        },
+        {
+            "Updated": "2025-03-06T12:42:40.4000355+07:00",
+            "Source": "extras",
+            "Version": "3.9.4",
+            "Info": "",
+            "Name": "sharpkeys"
+        },
+        {
+            "Updated": "2023-10-23T23:53:28.9601494+07:00",
+            "Source": "main",
+            "Version": "2.5.1",
+            "Info": "",
+            "Name": "winfetch"
+        },
+        {
+            "Updated": "2025-10-23T00:43:35.8111378+07:00",
+            "Source": "main",
+            "Version": "0.9.8",
+            "Info": "",
+            "Name": "zoxide"
+        }
+    ]
+}

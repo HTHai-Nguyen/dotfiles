@@ -1,0 +1,31 @@
+[general]
+import = ["~/.config/alacritty/alacritty-themes/efocado_dark.toml"]
+live_config_reload = true
+
+[window]
+padding = { x = 5, y = 10}
+decorations = "Full"
+opacity = 0.69
+startup_mode = "Fullscreen"
+resize_increments = true
+
+[font]
+normal = { family = "DejaVuSansMono", style = "Regular" }
+size = 13.5
+
+[colors]
+transparent_background_colors = true
+
+[mouse]
+hide_when_typing = true
+# bindings = []
+
+[terminal]
+osc52 = "CopyPaste"
+
+[selection]
+save_to_clipboard = true
+
+[scrolling]
+history = 999
+multiplier = 5
