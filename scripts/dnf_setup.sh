@@ -137,14 +137,12 @@ done
 # Install Plank (for GNOME/MATE)
 #install_package plank
 
-# ZSH Default shell & Oh-my-zsh
+#Oh-my-zsh
 echo ""
-echo "Set zsh as default shell & install Oh-my-zsh"
+echo "Install Oh-my-zsh"
 echo "============================================"
-touch ~/.zshrc
 if command -v zsh >/dev/null 2>&1; then
-  chsh -s "$(which zsh)"
-  echo "✅ zsh set as default shell"
+  touch ~/.zshrc
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
     if yes | KEEP_ZSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
       success_list+=("oh-my-zsh")
@@ -234,3 +232,11 @@ echo "Should install Nerd Fonts; Lazyvim & Config file nvim; terminal; zsh; DNS"
 echo "Set alias in .zshrc"
 echo "Additional packages for customize desktop environments"
 echo "======================================================================"
+
+echo "============================================"
+echo "Set zsh as default shell "
+echo "============================================"
+if command -v zsh >/dev/null 2>&1; then
+    chsh -s "$(which zsh)"
+    echo "✅ zsh set as default shell"
+fi 
