@@ -67,7 +67,6 @@ system_packages=(
   # software-properties-common
   # firewalld   # for Fedora & Arch
   # ufw   # for Ubunu
-  refind
   tlp
   tlp-rdw
 )
@@ -95,11 +94,10 @@ coding_packages=(
   # kitty   # terminal emulator
   # alacritty # terminal emulator minimal & faster
   # wezterm # terminal emulator
-  # lazygit
-  # mysql
+  lazygit
   # nginx
-  # nodejs
-  # npm
+  nodejs
+  npm
   # docker
   # postman
   # podman
@@ -129,17 +127,20 @@ for pkg in "${vn_packages[@]}"; do
   install_package "$pkg"
 done
 
-# Install Plank (for GNOME/MATE)
-#install_package plank
-
-# ZSH Default shell & Oh-my-zsh
+# Oh-my-zsh
 echo ""
-echo "Set zsh as default shell & install Oh-my-zsh"
+echo "Install Oh-my-zsh"
 echo "============================================"
 if command -v zsh >/dev/null 2>&1; then
-  touch ~/.zshrc
+    if [ ! -f "$HOME/.zshrc" ]; then
+        touch "$HOME/.zshrc"
+        echo "✅ Created .zshrc file"
+    else
+        echo "⚠️ .zshrc already exists, skipping creation"
+    fi 
+
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    if yes | RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
+    if yes | KEEP_ZSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
       success_list+=("oh-my-zsh")
     else
       fail_list+=("oh-my-zsh")
@@ -166,12 +167,25 @@ fi
 echo ""
 echo "Install autosuggestion, syntax highlighting, autocomplete for zsh"
 echo "================================================================="
-if command -v git >/dev/null; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
-  git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}" ]; then
+  if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
+    echo "✅ zsh-autosuggestions already installed. Skipping..."
+  else
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  fi
+  if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting" ]; then
+    echo "✅ fast-syntax-highlighting already installed. Skipping..."
+  else
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+  fi
+  if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autocomplete" ]; then
+    echo "✅ zsh-autocomplete already installed. Skipping..."
+  else
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+  fi
+  echo "✅ zsh plugins installed."
 else
-  echo "⚠️  Git has not installed."
+  echo "⚠️  Oh-my-zsh has not installed."
 fi
 
 echo "=================================="
