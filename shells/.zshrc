@@ -131,11 +131,11 @@ ALIAS_DIR="$HOME/dotfiles/shells/aliases"
 
 # Auto check distro / package manager to load alias
 if command -v pacman >/dev/null 2>&1; then
-    [[ -f "$ALIAS_DIR/pacman.aliases" ]] && source "$ALIAS_DIR/pacman.aliases"
+    [[ -f "$ALIAS_DIR/.aliases_pacman" ]] && source "$ALIAS_DIR/.aliases_pacman"
 elif command -v apt >/dev/null 2>&1; then
-    [[ -f "$ALIAS_DIR/apt.aliases" ]] && source "$ALIAS_DIR/apt.aliases"
+    [[ -f "$ALIAS_DIR/.aliases_apt" ]] && source "$ALIAS_DIR/.aliases_apt"
 elif command -v dnf >/dev/null 2>&1; then
-    [[ -f "$ALIAS_DIR/dnf.aliases" ]] && source "$ALIAS_DIR/dnf.aliases"
+    [[ -f "$ALIAS_DIR/.aliases_dnf" ]] && source "$ALIAS_DIR/.aliases_dnf"
 fi
 
 # Startup Tmux with Terminal
