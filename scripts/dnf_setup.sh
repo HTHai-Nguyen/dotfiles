@@ -235,4 +235,3 @@ if command -v zsh >/dev/null 2>&1; then
     chsh -s "$(which zsh)"
     echo "✅ zsh set as default shell"
 fi 
-rm -rf ~/.zshrc
