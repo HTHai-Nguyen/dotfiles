@@ -121,7 +121,7 @@ if command -v zsh >/dev/null 2>&1; then
 
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
       echo "Start to install oh-my-zsh"
-        if KEEP_ZSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
+        if yes n | KEEP_ZSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
             success_list+=("oh-my-zsh")
         else
             fail_list+=("oh-my-zsh")
