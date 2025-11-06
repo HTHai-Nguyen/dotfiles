@@ -64,7 +64,6 @@ system_packages=(
   # software-properties-common  # for Ubuntu
   # firewalld   # for Fedora & Arch
   # ufw   # for Ubunu
-  # rEFInd
   tlp
   tlp-rdw
 )
@@ -73,14 +72,14 @@ for pkg in "${system_packages[@]}"; do
   install_package "$pkg"
 done
 
-# Install wezterm
+# Enable wezterm/eza repo
 echo ""
-echo "Enable Wezterm repo for fedora"
+echo "Enable Wezterm/eza repo for fedora"
 echo "==============================="
 sudo dnf copr enable wezfurlong/wezterm-nightly -y
-sudo dnf install wezterm -y
+sudo dnf copr enable alternateved/eza -y
 
-# INstall coding/terminal packages
+# Install coding/terminal packages
 echo ""
 echo "Install packages for coding/terminal"
 echo "===================================="
@@ -92,18 +91,17 @@ coding_packages=(
   zoxide  # z jump
   ripgrep # faster grep
   bat     # better cat
-  # eza  # better ls (not on fedora 42)
+  eza  # better ls (not on fedora 42)
   stow
   # i3   # window manager for X11
   # sway # i3-like for wayland
   # kitty   # terminal emulator
   # alacritty # terminal emulator minimal & faster
   # wezterm # terminal emulator
-  # lazygit
-  # mysql
+  lazygit
   # nginx
-  # nodejs
-  # npm
+  nodejs
+  npm
   # docker
   # postman
   # podman
@@ -112,12 +110,6 @@ coding_packages=(
 for pkg in "${coding_packages[@]}"; do
   install_package "$pkg"
 done
-
-# Install Nerd fonts (DejavuSans Mono)
-echo ""
-echo "Install Nerd fonts"
-echo "=================="
-# sudo yay -S -y ttf-dejavu-nerd
 
 # Vietnamese keyboard-layout
 echo ""
@@ -134,15 +126,18 @@ for pkg in "${vn_packages[@]}"; do
   install_package "$pkg"
 done
 
-# Install Plank (for GNOME/MATE)
-#install_package plank
-
-#Oh-my-zsh
+# Oh-my-zsh
 echo ""
 echo "Install Oh-my-zsh"
 echo "============================================"
 if command -v zsh >/dev/null 2>&1; then
-  touch ~/.zshrc
+    if [ ! -f "$HOME/.zshrc" ]; then
+        touch "$HOME/.zshrc"
+        echo "✅ Created .zshrc file"
+    else
+        echo "⚠️ .zshrc already exists, skipping creation"
+    fi 
+
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
     if yes | KEEP_ZSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
       success_list+=("oh-my-zsh")
@@ -171,7 +166,7 @@ fi
 echo ""
 echo "Install autosuggestion, syntax highlighting, autocomplete for zsh"
 echo "================================================================="
-if command -v git >/dev/null; then
+if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}" ]; then
   if [ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
     echo "✅ zsh-autosuggestions already installed. Skipping..."
   else
@@ -189,7 +184,7 @@ if command -v git >/dev/null; then
   fi
   echo "✅ zsh plugins installed."
 else
-  echo "⚠️  Git has not installed."
+  echo "⚠️  Oh-my-zsh has not installed."
 fi
 
 echo "=================================="
