@@ -1,0 +1,6 @@
+# Aliases for pacman 
+alias update="sudo pacman -Syu"
+alias install="sudo pacman -S --noconfirm --needed"
+alias uninstall="sudo pacman -R --noconfirm"
+alias remove="sudo pacman -Rns --noconfirm"
+alias search="pacman -Ss"

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# GNU Stow format XDG except .zshrc & .bashrc
+
+set -euo pipefail 
+
+# Check bash or zsh 
+if [ -n "$BASH_VERSION" ]; then
+  DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+elseif [ -n "$ZSH_VERSION" ]; then
+  DOTFILES_DIR="$(cd "$(dirname "${(%):-%N}")" && pwd)"
+else 
+  echo "Unssuporrted shell"
+  exit 1
+fi 
+
+CONFIG_DIR="$HOME/.config"
+
+# shells
+stow -d "$DOTFILES_DIR" shells -t $HOME 
+
+# multiplexers
+stow -d "$DOTFILES_DIR" multiplexers 
+
+# neovim choose 1 distro & uncomment that
+# stow -d "$DOTFILES_DIR" neovim/lazyvim
+# stow -d "$DOTFILES_DIR" neovim/ecovim
+# stow -d "$DOTFILES_DIR" neovim/kickstart
+# stow -d "$DOTFILES_DIR" neovim/nvchad
+
+# terminals
+stow -d "$DOTFILES_DIR" terminals
+
+# windows managers
+stow -d "$DOTFILES_DIR" wm
+
+echo 
+echo "All done! Dotilfes successfully GNU Stow."
