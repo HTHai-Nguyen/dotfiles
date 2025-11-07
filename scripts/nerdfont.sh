@@ -1,110 +1,92 @@
 #!/usr/bin/env bash
-# ========================================================
-# Nerd Font Installer with FZF (multi‑select + remove)
-# Uses real download URLs from Nerd Fonts GitHub release
-# ========================================================
-set -euo pipefail
+# --------------------------------------------------
+# Nerd Font Installer
+# --------------------------------------------------
 
-FONT_DIR="$HOME/.local/share/fonts"
-DOWNLOAD_DIR="$HOME/Downloads"
-GITHUB_API="https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
-
-# ---------------------- Functions ------------------------
-check_dependencies() {
-  for cmd in curl wget unzip fc-cache grep fzf jq; do
-    if ! command -v "$cmd" >/dev/null 2>&1; then
-      echo "❌ Missing dependency: $cmd"
-      exit 1
-    fi
-  done
-}
-
-fetch_font_assets() {
-  echo "🌐 Fetching Nerd Fonts assets from GitHub..."
-  curl -s "$GITHUB_API" \
-    | jq -r '.assets[] | select(.name | test("zip$")) | "\(.name) \(.browser_download_url)"'
-}
-
-download_and_install_font() {
-  local font_name="$1"
-  local url="$2"
-  local zip_file="$DOWNLOAD_DIR/${font_name}.zip"
-
-  if fc-list | grep -iq "$font_name"; then
-    echo "✅ Font '$font_name' is already installed. Skipping."
-    return
-  fi
-
-  echo "⬇️ Downloading $font_name..."
-  wget -q -O "$zip_file" "$url"
-
-  if ! unzip -l "$zip_file" | grep -Eq '\.(ttf|otf)'; then
-    echo "❌ ZIP does not contain font files. Removing..."
-    rm -f "$zip_file"
-    return
-  fi
-
-  echo "📦 Extracting to $FONT_DIR"
-  mkdir -p "$FONT_DIR"
-  unzip -o "$zip_file" -d "$FONT_DIR" >/dev/null
-
-  echo "🔄 Updating font cache..."
-  fc-cache -f -v >/dev/null
-
-  if fc-list | grep -iq "$font_name"; then
-    echo "✅ Installation complete: $font_name"
-  else
-    echo "⚠️ Installation attempted but font not detected."
-  fi
-}
-
-remove_font() {
-  local font="$1"
-  if ! fc-list | grep -iq "$font"; then
-    echo "❌ Font '$font' not installed."
-    return
-  fi
-
-  echo "🗑 Removing font '$font'..."
-  find "$FONT_DIR" -type f -iname "*$font*.ttf" -o -iname "*$font*.otf" -exec rm -v {} \;
-  fc-cache -f -v >/dev/null
-  echo "✅ Font '$font' removed."
-}
-
-# ---------------------- Main ------------------------
-check_dependencies
-
-if [[ "${1:-}" == "--remove" ]]; then
-  if [[ -z "${2:-}" ]]; then
-    echo "Usage: $0 --remove fontname"
-    exit 1
-  fi
-  remove_font "$2"
-  exit 0
-fi
-
-ASSETS=$(fetch_font_assets)
-if [[ -z "$ASSETS" ]]; then
-  echo "❌ Failed to retrieve font assets from GitHub."
-  exit 1
-fi
-
-MENU=$(echo "$ASSETS" | awk '{print $1}')
-URL_MAP=$(echo "$ASSETS")
-
-echo "🎨 Select Nerd Fonts to install (type to search, TAB for multi‑select):"
-SELECTED=$(echo "$MENU" | fzf --height 40% --reverse --prompt="Font: " --multi --border)
-
-if [[ -z "$SELECTED" ]]; then
-  echo "❌ No font selected. Exiting."
-  exit 1
-fi
-
-for font in $SELECTED; do
-  url=$(echo "$URL_MAP" | grep -F "$font " | awk '{print $2}')
-  download_and_install_font "$font" "$url"
-done
+set -e  # stop on any error
 
 echo
-echo "🎉 All selected fonts processed!"
+echo "=============================="
+echo "   🧠 Nerd Font Installer"
+echo "=============================="
+echo
+
+# Menu options
+echo "Select a Nerd Font to install:"
+echo "[1] JetBrainsMono"
+echo "[2] Hack"
+echo "[3] DejaVuSansMono"
+echo "[4] MesloLG"
+echo "[5] FiraCode"
+echo "[6] Others (type the name manually)"
+echo
+
+read -rp "Enter your choice (1-6): " choice
+
+case $choice in
+    1) FONT_NAME="JetBrainsMono" ;;
+    2) FONT_NAME="Hack" ;;
+    3) FONT_NAME="DejaVuSansMono" ;;
+    4) FONT_NAME="MesloLG" ;;
+    5) FONT_NAME="FiraCode" ;;
+    6)
+        read -rp "Enter the font name (exactly as on GitHub, e.g., CascadiaCode, RobotoMono): " FONT_NAME
+        ;;
+    *)
+        echo "❌ Invalid selection. Exiting."
+        exit 1
+        ;;
+esac
+
+echo
+echo "🔤 Selected font: $FONT_NAME"
+echo
+
+FONT_DIR="$HOME/.local/share/fonts"
+FONT_ZIP="$HOME/Downloads/${FONT_NAME}.zip"
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${FONT_NAME}.zip"
+
+# Check if font already installed
+if fc-list | grep -iq "$FONT_NAME"; then
+    echo "✅ Font '$FONT_NAME' already installed. Skipping download."
+    exit 0
+fi
+
+# Check if URL actually exists
+echo "🌐 Checking font availability on GitHub..."
+if ! curl --output /dev/null --silent --head --fail "$FONT_URL"; then
+    echo "❌ Font '$FONT_NAME' not found on Nerd Fonts GitHub."
+    echo "👉 Check available fonts at: https://github.com/ryanoasis/nerd-fonts/releases/latest"
+    exit 1
+fi
+
+# Download the font
+echo "⬇️  Downloading $FONT_NAME Nerd Font..."
+wget -q -O "$FONT_ZIP" "$FONT_URL"
+
+# Verify the zip file contains font files
+if ! unzip -l "$FONT_ZIP" | grep -Eq '\.(ttf|otf)'; then
+    echo "❌ The downloaded file does not contain any font files. Possibly a bad download."
+    rm -f "$FONT_ZIP"
+    exit 1
+fi
+
+# Extract font files directly into ~/.local/share/fonts
+echo "📦 Extracting fonts to: $FONT_DIR"
+unzip -o "$FONT_ZIP" -d "$FONT_DIR" >/dev/null
+
+# Update font cache
+echo "🔄 Updating font cache..."
+fc-cache -f -v >/dev/null
+
+# Verify installation success
+if fc-list | grep -iq "$FONT_NAME"; then
+    echo "✅ $FONT_NAME Nerd Font installation complete!"
+else
+    echo "⚠️ Font installation attempted, but system cannot find '$FONT_NAME'."
+    echo "Try running: fc-cache -f -v"
+fi
+
+echo
+echo "🎉 Done! You can now use '$FONT_NAME Nerd Font' in your terminal or editor."
 
