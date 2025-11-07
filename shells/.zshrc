@@ -126,16 +126,9 @@ source $ZSH/oh-my-zsh.sh
 # -------------------------------
 # 🔗 Load Aliases files
 # -------------------------------
-
-ALIAS_DIR="$HOME/dotfiles/shells/.aliases"
-
-# Auto check distro / package manager to load alias
-if command -v pacman >/dev/null 2>&1; then
-    [[ -f "$ALIAS_DIR/pacman.aliases" ]] && source "$ALIAS_DIR/pacman.aliases"
-elif command -v apt >/dev/null 2>&1; then
-    [[ -f "$ALIAS_DIR/apt.aliases" ]] && source "$ALIAS_DIR/apt.aliases"
-elif command -v dnf >/dev/null 2>&1; then
-    [[ -f "$ALIAS_DIR/dnf.aliases" ]] && source "$ALIAS_DIR/dnf.aliases"
+ALIAS_FILE="$HOME/dotfiles/shells/.aliases"
+if [ -f $ALIAS_FILE ]; then
+	source $ALIAS_FILE
 fi
 
 # Startup Tmux with Terminal

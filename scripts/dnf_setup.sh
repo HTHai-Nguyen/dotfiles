@@ -74,10 +74,11 @@ done
 
 # Enable wezterm/eza repo
 echo ""
-echo "Enable Wezterm/eza repo for fedora"
+echo "Enable Wezterm/eza/lazgygit repo for fedora"
 echo "==============================="
 sudo dnf copr enable wezfurlong/wezterm-nightly -y
 sudo dnf copr enable alternateved/eza -y
+sudo dnf copr enable dejan/lazygit
 
 # Install coding/terminal packages
 echo ""
@@ -91,7 +92,7 @@ coding_packages=(
   zoxide  # z jump
   ripgrep # faster grep
   bat     # better cat
-  eza  # better ls (not on fedora 42)
+  eza     # better ls (not on fedora 42)
   stow
   # i3   # window manager for X11
   # sway # i3-like for wayland
@@ -131,12 +132,12 @@ echo ""
 echo "Install Oh-my-zsh"
 echo "============================================"
 if command -v zsh >/dev/null 2>&1; then
-    if [ ! -f "$HOME/.zshrc" ]; then
-        touch "$HOME/.zshrc"
-        echo "✅ Created .zshrc file"
-    else
-        echo "⚠️ .zshrc already exists, skipping creation"
-    fi 
+  if [ ! -f "$HOME/.zshrc" ]; then
+    touch "$HOME/.zshrc"
+    echo "✅ Created .zshrc file"
+  else
+    echo "⚠️ .zshrc already exists, skipping creation"
+  fi
 
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
     if yes | KEEP_ZSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; then
@@ -232,6 +233,6 @@ echo "============================================"
 echo "Set zsh as default shell "
 echo "============================================"
 if command -v zsh >/dev/null 2>&1; then
-    chsh -s "$(which zsh)"
-    echo "✅ zsh set as default shell"
-fi 
+  chsh -s "$(which zsh)"
+  echo "✅ zsh set as default shell"
+fi

@@ -1,5 +1,5 @@
 [general]
-import = ["~/.config/alacritty/alacritty-themes/efocado_dark.toml"]
+import = ["~/.config/alacritty/alacritthemes/efocado_dark.toml"]
 live_config_reload = true
 
 [window]
