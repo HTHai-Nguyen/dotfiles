@@ -41,7 +41,7 @@ echo
 echo "🔤 Selected font: $FONT_NAME"
 echo
 
-FONT_DIR="$HOME/.local/share/fonts/$FONT_NAME"
+FONT_DIR="$HOME/.local/share/fonts"
 FONT_ZIP="$HOME/Downloads/${FONT_NAME}.zip"
 FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${FONT_NAME}.zip"
 
