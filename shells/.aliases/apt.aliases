@@ -1,0 +1,6 @@
+# Aliases for apt
+ alias update="sudo apt update"
+ alias upgrade="sudo apt upgrade -y"
+ alias install="sudo apt install -y"
+ alias uninstall="sudo apt remove -y"
+ alias search="apt search"

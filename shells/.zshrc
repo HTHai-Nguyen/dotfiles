@@ -127,7 +127,7 @@ source $ZSH/oh-my-zsh.sh
 # 🔗 Load Aliases files
 # -------------------------------
 
-ALIAS_DIR="$HOME/dotfiles/shells/aliases"
+ALIAS_DIR="$HOME/dotfiles/shells/.aliases"
 
 # Auto check distro / package manager to load alias
 if command -v pacman >/dev/null 2>&1; then

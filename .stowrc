@@ -4,5 +4,4 @@
 --ignore=.stowrc
 --ignore=windows
 --ignore=scripts
---ignore=shells/aliases
 --ignore=keyboards
