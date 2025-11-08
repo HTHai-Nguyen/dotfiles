@@ -27,7 +27,7 @@ case $choice in
     1) FONT_NAME="JetBrainsMono" ;;
     2) FONT_NAME="Hack" ;;
     3) FONT_NAME="DejaVuSansMono" ;;
-    4) FONT_NAME="MesloLG" ;;
+    4) FONT_NAME="Meslo" ;;
     5) FONT_NAME="FiraCode" ;;
     6)
         read -rp "Enter the font name (exactly as on GitHub, e.g., CascadiaCode, RobotoMono): " FONT_NAME
