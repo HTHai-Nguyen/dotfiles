@@ -106,11 +106,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -132,10 +132,9 @@ if [ -f $ALIAS_FILE ]; then
 fi
 
 # Startup Tmux with Terminal
-# exec tmux
-# if [[ -z "$TMUX" ]] && command -v tmux >/dev/null; then
-#   exec tmux
-# fi
+if [[ -z "$TMUX" ]] && command -v tmux >/dev/null; then
+  exec tmux attach
+fi
 
  # Startup zoxide
 eval "$(zoxide init zsh)"
@@ -153,4 +152,6 @@ eval "$(zoxide init zsh)"
  alias la="eza -la --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions"
  alias ls="eza -G --icons=always --color=auto --group-directories-last"
  alias lt="eza -T -a --icons=always --group-directories-last --no-permissions --hyperlink"
+
+ [ "$TERM" = "wezterm" ] && export TERM=xterm-256color
 
