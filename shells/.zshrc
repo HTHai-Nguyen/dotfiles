@@ -133,7 +133,7 @@ fi
 
 # Startup Tmux with Terminal
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t main || tmux new -s main
+    tmux attach -t home || tmux new -s home
 fi
 
  # Startup zoxide
