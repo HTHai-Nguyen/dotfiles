@@ -2,6 +2,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 return {
+
+	-- Appearance
 	font_size = 13.0,
 	window_background_opacity = 0.8,
 
