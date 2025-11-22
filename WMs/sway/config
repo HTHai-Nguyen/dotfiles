@@ -1,8 +1,6 @@
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
 
 exec systemctl --user start NetworkManager 
 
@@ -23,7 +21,8 @@ set $menu wmenu-run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/dotfiles/wallpapers/wallpaper01.jpg fill
 #
 # Example configuration:
 #
@@ -31,15 +30,6 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -69,7 +59,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec fuzzel --width=50
+
+    # Autostart
+    exec_always --no-startup-id  nm-applet --indicator &
+    exec_always --no-startup-id fcitx5 &
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -77,9 +71,18 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
+    focus_follows_mouse no
 
     # Reload the configuration file
     bindsym $mod+Shift+r reload
+
+    # Hide title window
+    default_border none
+    default_floating_border none
+    titlebar_padding 1
+    titlebar_border_thickness 0
+    for_window [title="^.*"] title_format ""
+    hide_edge_borders smart
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -110,6 +113,18 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Workspaces:
 #
+
+    # Set name workspaces
+    set $ws1 1
+    set $ws2 2
+    set $ws3 3
+    set $ws4 4
+    set $ws5 5
+    set $ws6 6
+    set $ws7 7
+    set $ws8 8
+    set $ws9 9
+    set $ws10 10
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -122,16 +137,16 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace number $ws1; workspaces $ws1
+    bindsym $mod+Shift+2 move container to workspace number $ws2; workspaces $ws2
+    bindsym $mod+Shift+3 move container to workspace number $ws3; focus $ws3
+    bindsym $mod+Shift+4 move container to workspace number $ws4; workspaces $ws4
+    bindsym $mod+Shift+5 move container to workspace number $ws5; workspaces $ws5
+    bindsym $mod+Shift+6 move container to workspace number $ws6; workspaces $ws6
+    bindsym $mod+Shift+7 move container to workspace number $ws7; workspaces $ws7
+    bindsym $mod+Shift+8 move container to workspace number $ws8; workspaces $ws8
+    bindsym $mod+Shift+9 move container to workspace number $ws9; workspaces $ws9
+    bindsym $mod+Shift+0 move container to workspace number $ws10; workspaces $ws10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -213,17 +228,16 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+  ### The default swaybar
+    # position top
+    # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    # colors {
+    #     statusline #ffffff
+    #     background #323232
+    #     inactive_workspace #32323200 #32323200 #5c5c5c
+    # }
+    
+    swaybar_command waybar
 }
 
 include /etc/sway/config.d/*

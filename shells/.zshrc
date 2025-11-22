@@ -89,7 +89,7 @@ plugins=(
 	zsh-autocomplete
 	sudo
 	tmux
-	web-search
+	# web-search
 	copypath
 	copyfile
 	# dirhistory
@@ -147,6 +147,7 @@ eval "$(zoxide init zsh)"
  alias zshconf="vi ~/.zshrc"
  alias ohmyzsh="vi ~/.oh-my-zsh"
  alias cls="clear"
+ alias lzg='lazygit'
 # eza 
  alias ll="eza -l --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions" 
  alias la="eza -la --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions"
