@@ -145,8 +145,10 @@ output * bg ~/dotfiles/wallpapers/wallpaper01.jpg fill
     # Note: workspaces can have any name you want, not just numbers.
  
     # Move workspace betwwen monitors
-    bindsym $mod+Ctrl+Shift+h move workspace to output left
-    bindsym $mod+Ctrl+Shift+l move workspace to output right
+    bindsym $mod+Shift+a move workspace to output left
+    bindsym $mod+Shift+d move workspace to output right
+    bindsym $mod+Shift+w move workspace to output up
+    bindsym $mod+Shift+s move workspace to output down
 
 
 # Layout stuff:
