@@ -1,0 +1,8 @@
+pane	config	1	1	:*	1	henry@fedora:~/.config/tmux	:/home/henry/dotfiles/multiplexers/tmux	0	zsh	:
+pane	config	1	1	:*	2	henry@fedora:~/dotfiles/multiplexers/tmux	:/home/henry/dotfiles/multiplexers/tmux	1	zsh	:
+pane	home	1	1	:*	1	henry@fedora:~/dotfiles/statusbars/waybar	:/home/henry/dotfiles/statusbars/waybar	1	zsh	:
+pane	server	1	1	:*	1	henry@fedora:~	:/home/henry	1	zsh	:
+window	config	1	:zsh	1	:*	8592,255x59,0,0{148x59,0,0,1,106x59,149,0,2}	:
+window	home	1	:zsh	1	:*	d460,255x59,0,0,3	:
+window	server	1	:zsh	1	:*	d461,255x59,0,0,4	:
+state	config	home

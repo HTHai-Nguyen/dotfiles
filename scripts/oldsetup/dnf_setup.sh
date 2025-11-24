@@ -7,21 +7,6 @@ de="${XDG_CURRENT_DESKTOP:-Unknown DE}"
 echo "Automatically setup for $distro ($de)"
 echo "======================================"
 
-# Auto update - upgrade & cleanup
-sudo dnf update && sudo dnf upgrade -y
-sudo dnf autoremove -y && sudo dnf cleanup -y
-
-# After update, always install git ready for all
-echo ""
-echo "Install git always is neccessary "
-echo "=================================="
-if ! command -v git >/dev/null 2>&1; then
-  echo "📦 Installing git and base-devel..."
-  sudo dnf install -y git
-else
-  echo "✅ git already installed. Skipping..."
-fi
-
 # Check RPM Fusion repository
 echo ""
 echo "Check RPM Fusion repository"
@@ -60,10 +45,7 @@ system_packages=(
   # neofetch  # for Ubuntu (if not have fastfetch)
   gnupg
   ca-certificates
-  # build-essential   # for Ubuntu
-  # software-properties-common  # for Ubuntu
   # firewalld   # for Fedora & Arch
-  # ufw   # for Ubunu
   tlp
   tlp-rdw
 )
@@ -78,7 +60,7 @@ echo "Enable Wezterm/eza/lazgygit repo for fedora"
 echo "==============================="
 sudo dnf copr enable wezfurlong/wezterm-nightly -y
 sudo dnf copr enable alternateved/eza -y
-sudo dnf copr enable dejan/lazygit
+sudo dnf copr enable dejan/lazygit -y
 
 # Install coding/terminal packages
 echo ""
@@ -212,15 +194,14 @@ else
   echo "🎉 No failed packages. All done!"
 fi
 
+# Auto update - upgrade & cleanup
+# sudo dnf update && sudo dnf upgrade -y
+# sudo dnf autoremove -y && sudo dnf cleanup -y
+
 echo "===================================="
 echo "Enable packages"
 echo "===================================="
-sudo systemctl enable tlp
-# sudo ufw allow ssh
-# sudo ufw enable
-# sudo ufw status verbose
-# sudo refind-install
-# neofetch
+# sudo systemctl enable tlp
 fastfetch
 
 echo "====================================================================="

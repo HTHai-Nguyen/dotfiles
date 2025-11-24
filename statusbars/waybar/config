@@ -4,7 +4,7 @@
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/recorder", "pulseaudio", "backlight", "temperature", "cpu", "memory", "battery", "network", "tray",  "custom/powermenu"],
+    "modules-right": ["custom/recorder", "pulseaudio", "backlight", "temperature", "cpu", "memory", "battery", "tray",  "custom/powermenu"],
     "sway/mode": {
         "format": " {}"
     },
@@ -75,12 +75,6 @@
             "critical": 10
         },
         "tooltip": false
-    },
-    "network": {
-        "format": "{icon}",
-        "format-wifi": "<span font='Font Awesome 5 Free 10'></span> {essid} ({signalStrength}%)",
-        "format-disconnected": "⚠ Disconnected",
-        "tooltip": false,
     },
     "pulseaudio": {
         "format": "<span font='Font Awesome 5 Free 11'>{icon:2}</span>{volume}%",
