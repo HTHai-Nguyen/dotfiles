@@ -2,6 +2,7 @@
 
 # ignore
 --ignore=.stowrc
+--ignore=neovim
 --ignore=windows
 --ignore=scripts
 --ignore=keyboards
