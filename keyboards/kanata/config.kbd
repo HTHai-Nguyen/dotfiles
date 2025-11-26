@@ -1,0 +1,43 @@
+(defcfg
+  process-unmapped-keys yes
+  ;; allow-cmd yes
+  danger-enable-cmd yes
+  ;; cmp-seq ralt
+  ;; cmp-seq-delay 5
+  
+  ;; For Windows
+  ;; process-unmapped-keys no
+)
+
+;; ==================== ALIASES ==================
+(defalias
+  fn1    (layer-toggle layer1)
+  spcfn1 (tap-hold 250 250 spc (layer-while-held layer1))
+)
+
+;; ==================== SOURCE ====================
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '         ret
+  lsft z    x    c    v    b    n    m    ,    .    /              rsft
+  lctl lmet lalt                  spc                  ralt sys  rctl
+)
+
+;; ==================== LAYER QWERTY (base) ====================
+(deflayer qwerty
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  lctl a    s    d    f    g    h    j    k    l    ;    '         ret
+  lsft z    x    c    v    b    n    m    ,    .    /              rsft
+  lctl lmet lalt                  @spcfn1              ralt sys  rctl
+)
+
+;; ==================== LAYER 1 (navigation + arrow kép) ====================
+(deflayer layer1
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  caps home up   end  _    _    _    _    _    _    _    _    _    _
+  _    left down rght _    _    left down up   rght _    _         _
+  _    _    _    _    _    _    _    _    _    _    _              _
+  _    _    _                   _                   _    _    _
+)
