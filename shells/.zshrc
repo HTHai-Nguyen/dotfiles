@@ -156,3 +156,13 @@ eval "$(zoxide init zsh)"
 
  [ "$TERM" = "wezterm" ] && export TERM=xterm-256color
 
+ git() {
+  if [[ $1 == "push" ]]; then
+        echo -e "\033[1;41m REMEMBER TO GIT PULL BEFORE PUSHING! \033[0m"
+        echo -e "\033[1;33mType the word \"pull\" and press Enter to confirm (or Ctrl+C to cancel):\033[0m"
+        read -r confirm
+        [[ "$confirm" == "pull" ]] || { 
+            echo "You didn't type 'pull' → push aborted. Go pull first!" 
+            return 1
+        }
+    fi}
