@@ -4,7 +4,7 @@
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/recorder", "pulseaudio", "backlight", "temperature", "cpu", "memory", "battery", "tray",  "custom/powermenu"],
+    "modules-right": ["custom/recorder", "pulseaudio", "backlight", "cpu", "memory","network", "battery", "tray",  "custom/powermenu"],
     "sway/mode": {
         "format": " {}"
     },
@@ -15,15 +15,15 @@
         "format": "{icon}",
         "format-icons": {
             "1": "1 <span font='Font Awesome 5 Free 14'></span>",
-            "2": "2 <span font='Font Awesome 5 Free 14'></span>",
-            "3": "3 <span font='Font Awesome 5 Free 14'></span>",
-            "4": "4 <span font='Font Awesome 5 Free 14'></span>",
-            "5": "5 <span font='Font Awesome 5 Free 14'></span>",
-            "6": "6 <span font='Font Awesome 5 Free 14'></span>",
-            "7": "7 <span font='Font Awesome 5 Free 14'></span>",
-            "8": "8 <span font='Font Awesome 5 Free 14'></span>",
-            "9": "9 <span font='Font Awesome 5 Free 14'></span>",
-            "10": "0 <span font='Font Awesome 5 Free 14'></span>"
+            "2": "2 <span font='Font Awesome 6 Brands'></span>",
+            "3": "3 <span font='Font Awesome 5 Free 14'></span>",
+            "4": "4 <span font='Font Awesome 5 Free 14'></span>",
+            "5": "5 <span font='Font Awesome 5 Free 14'></span>",
+            "6": "6 <span font='Font Awesome 5 Free 14'></span>",
+            "7": "7 <span font='Font Awesome 5 Free 14'></span>",
+            "8": "8 <span font='Font Awesome 5 Free 14'></span>",
+            "9": "9 <span font='Font Awesome 5 Free 14'></span>",
+            "0": "0 <span font='Font Awesome 5 Free 14'></span>",
         }
     },
     "tray": {
@@ -97,18 +97,12 @@
         "on-scroll-up": "light -A 1",
         "on-scroll-down": "light -U 1"
     },
-    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 75,
-        "interval": 5,
-        "format": "{icon} {temperatureC}°",
-        "tooltip": false,
-        "format-icons": [
-            "", // Icon: temperature-empty
-            "", // Icon: temperature-quarter
-            "", // Icon: temperature-half
-            "", // Icon: temperature-three-quarters
-            ""  // Icon: temperature-full
-        ]
+    "network": {
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": "Wired 󰈀 ",
+        "tooltip-format": "{ifname}: {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "bash ~/.config/rofi/wifi/wifi-menu.sh",
     }
 }
