@@ -4,7 +4,7 @@
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/recorder", "pulseaudio", "backlight", "cpu", "memory","network", "battery", "tray",  "custom/powermenu"],
+    "modules-right": ["custom/recorder", "pulseaudio", "backlight", "cpu", "memory", "battery", "tray",  "custom/powermenu"],
     "sway/mode": {
         "format": " {}"
     },
@@ -97,7 +97,7 @@
         "on-scroll-up": "light -A 1",
         "on-scroll-down": "light -U 1"
     },
-    "network": {
+    /* "network": {
         "format-wifi": " {signalStrength}%",
         "format-ethernet": "Wired 󰈀 ",
         "tooltip-format": "{ifname}: {gwaddr}",
@@ -105,4 +105,5 @@
         "format-disconnected": "Disconnected ⚠",
         "on-click": "bash ~/.config/rofi/wifi/wifi-menu.sh",
     }
+    */
 }

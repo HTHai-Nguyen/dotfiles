@@ -3,6 +3,10 @@ if command -v tmux &> /dev/null && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ 
   tmux attach -t home || tmux new -s home
 fi
 
+# Set environment $VISUAL is neovim
+export VISUAL="nvim"
+export EDITOR="$VISUAL"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -89,10 +93,9 @@ plugins=(
 	zsh-autocomplete
 	sudo
 	tmux
-	# web-search
 	copypath
 	copyfile
-	# dirhistory
+	dirhistory
 	fzf
 	zoxide
 	eza
@@ -148,6 +151,7 @@ eval "$(zoxide init zsh)"
  alias ohmyzsh="vi ~/.oh-my-zsh"
  alias cls="clear"
  alias lzg='lazygit'
+ alias download='aria2c -x 16 -s 16'
 # eza 
  alias ll="eza -l --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions" 
  alias la="eza -la --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions"
@@ -156,6 +160,7 @@ eval "$(zoxide init zsh)"
 
  [ "$TERM" = "wezterm" ] && export TERM=xterm-256color
 
+ # Warning git
  git() {
   if [[ $1 == "push" ]]; then
         echo -e "\033[1;41m REMEMBER TO GIT PULL BEFORE PUSHING! \033[0m"
