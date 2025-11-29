@@ -2232,7 +2232,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/clojure-lsp/clojure-lsp@2025.08.25-14.21.46",
+      "id": "pkg:github/clojure-lsp/clojure-lsp@2025.11.28-12.47.43",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -2742,7 +2742,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40github/copilot-language-server@1.397.0"
+      "id": "pkg:npm/%40github/copilot-language-server@1.398.0"
     },
     "bin": {
       "copilot-language-server": "npm:copilot-language-server"
@@ -9994,7 +9994,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/mypy@1.18.2"
+      "id": "pkg:pypi/mypy@1.19.0"
     },
     "bin": {
       "mypy": "pypi:mypy",
@@ -11305,7 +11305,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.90.0",
+      "id": "pkg:github/PHP-CS-Fixer/PHP-CS-Fixer@v3.91.0",
       "asset": {
         "file": "php-cs-fixer.phar"
       }
@@ -11771,7 +11771,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:npm/prettier@3.7.1"
+      "id": "pkg:npm/prettier@3.7.2"
     },
     "bin": {
       "prettier": "npm:prettier"
@@ -13629,7 +13629,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:pypi/ruff@0.14.6"
+      "id": "pkg:pypi/ruff@0.14.7"
     },
     "bin": {
       "ruff": "pypi:ruff"
@@ -13674,7 +13674,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/rvben/rumdl@v0.0.183",
+      "id": "pkg:github/rvben/rumdl@v0.0.185",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -15008,7 +15008,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:gem/sorbet@0.6.12793",
+      "id": "pkg:gem/sorbet@0.6.12798",
       "supported_platforms": [
         "unix"
       ]
@@ -15530,7 +15530,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:npm/stylelint@16.26.0"
+      "id": "pkg:npm/stylelint@16.26.1"
     },
     "bin": {
       "stylelint": "npm:stylelint"
@@ -17172,7 +17172,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/ribru17/ts_query_ls@v3.12.0",
+      "id": "pkg:github/ribru17/ts_query_ls@v3.13.0",
       "asset": [
         {
           "target": "darwin_x64",
@@ -17223,7 +17223,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/@typescript/native-preview@7.0.0-dev.20251127.1"
+      "id": "pkg:npm/@typescript/native-preview@7.0.0-dev.20251128.1"
     },
     "bin": {
       "tsgo": "npm:tsgo"
@@ -17361,7 +17361,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:pypi/ty@0.0.1a28"
+      "id": "pkg:pypi/ty@0.0.1a29"
     },
     "bin": {
       "ty": "pypi:ty"

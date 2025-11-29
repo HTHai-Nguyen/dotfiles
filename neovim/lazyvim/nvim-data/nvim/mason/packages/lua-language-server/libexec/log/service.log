@@ -1,14 +1,14 @@
-[22:50:25.296][info] [#0:/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:68]: Lua Lsp startup, root: 	/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec
-[22:50:25.296][info] [#0:/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:69]: ROOT:	/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec
-[22:50:25.296][info] [#0:/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:70]: LOGPATH:	/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/log
-[22:50:25.296][info] [#0:/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:71]: METAPATH:	/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/meta
-[22:50:25.296][info] [#0:/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:72]: VERSION:	3.15.0
-[22:50:25.321][info] [#0:script/proto/proto.lua:260]: Listen Mode: stdio
-[22:50:25.321][info] [#0:script/service/service.lua:145]: 
+[11:29:13.126][info] [#0:/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/main.lua:68]: Lua Lsp startup, root: 	/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec
+[11:29:13.126][info] [#0:/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/main.lua:69]: ROOT:	/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec
+[11:29:13.126][info] [#0:/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/main.lua:70]: LOGPATH:	/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/log
+[11:29:13.126][info] [#0:/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/main.lua:71]: METAPATH:	/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/meta
+[11:29:13.127][info] [#0:/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/main.lua:72]: VERSION:	3.15.0
+[11:29:13.168][info] [#0:script/proto/proto.lua:260]: Listen Mode: stdio
+[11:29:13.168][info] [#0:script/service/service.lua:145]: 
 ========= Medical Examination Report =========
     --------------- Memory ---------------
-        Total: 2.265 MB
-        # 00 : 2.265 MB
+        Total: 2.267 MB
+        # 00 : 2.267 MB
         # 01 : 0.000 MB
         # 02 : 0.000 MB
         # 03 : 0.000 MB
@@ -26,7 +26,7 @@
         Holdon:   0
         Waiting:  0
 ==============================================
-[22:50:25.426][info] [#0:script/client.lua:657]: Client init	{
+[11:29:13.278][info] [#0:script/client.lua:657]: Client init	{
   capabilities = {
     general = {
       positionEncodings = { "utf-8", "utf-16", "utf-32" }
@@ -59,9 +59,14 @@
           commitCharactersSupport = false,
           deprecatedSupport = true,
           documentationFormat = { "markdown", "plaintext" },
+          insertReplaceSupport = true,
+          insertTextModeSupport = {
+            valueSet = { 1 }
+          },
+          labelDetailsSupport = true,
           preselectSupport = false,
           resolveSupport = {
-            properties = { "additionalTextEdits", "command" }
+            properties = { "documentation", "detail", "additionalTextEdits", "command", "data" }
           },
           snippetSupport = true,
           tagSupport = {
@@ -72,10 +77,11 @@
           valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }
         },
         completionList = {
-          itemDefaults = { "editRange", "insertTextFormat", "insertTextMode", "data" }
+          itemDefaults = { "commitCharacters", "editRange", "insertTextFormat", "insertTextMode", "data" }
         },
         contextSupport = true,
-        dynamicRegistration = false
+        dynamicRegistration = false,
+        insertTextMode = 1
       },
       declaration = {
         linkSupport = true
@@ -227,17 +233,17 @@
     name = "Neovim",
     version = "0.11.4"
   },
-  processId = 465266,
-  rootPath = "/home/henry/dotfiles",
-  rootUri = "file:///home/henry/dotfiles",
+  processId = 62553,
+  rootPath = "/home/henry/dotfiles/neovim/lazyvim/nvim",
+  rootUri = "file:///home/henry/dotfiles/neovim/lazyvim/nvim",
   trace = "off",
   workDoneToken = "1",
   workspaceFolders = { {
-      name = "/home/henry/dotfiles",
-      uri = "file:///home/henry/dotfiles"
+      name = "/home/henry/dotfiles/neovim/lazyvim/nvim",
+      uri = "file:///home/henry/dotfiles/neovim/lazyvim/nvim"
     } }
 }
-[22:50:25.427][info] [#0:script/language.lua:137]: VSC language: nil
-[22:50:25.427][info] [#0:script/language.lua:138]: LS  language: en-us
-[22:50:25.427][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/henry/dotfiles
-[22:50:25.427][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/henry/.local/share/nvim/mason/packages/lua-language-server/libexec/log/file_home_henry_dotfiles.log
+[11:29:13.278][info] [#0:script/language.lua:137]: VSC language: nil
+[11:29:13.278][info] [#0:script/language.lua:138]: LS  language: en-us
+[11:29:13.278][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/henry/dotfiles/neovim/lazyvim/nvim
+[11:29:13.279][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/henry/dotfiles/neovim/lazyvim/nvim-data/nvim/mason/packages/lua-language-server/libexec/log/file_home_henry_dotfiles_neovim_lazyvim_nvim.log

@@ -61,3 +61,5 @@ fctix5-unikey
 # fctix5-bamboo
 fcitx5-configtool
 
+## Others packages
+aria2
