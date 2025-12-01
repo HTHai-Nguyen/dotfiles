@@ -18,8 +18,8 @@ set $menu fuzzel
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output DP-1 mode 2560x1440@75Hz
-output eDP-1 bg ~/dotfiles/wallpapers/wallpaper07.png fill
-output DP-1 bg ~/dotfiles/wallpapers/wallpaper01.jpg fill
+output eDP-1 bg ~/wallpapers/wallpaper07.png fill
+output DP-1 bg ~/wallpapers/wallpaper01.jpg fill
 #
 # Example configuration:
 #
@@ -83,8 +83,7 @@ set $fcitx_env \
     exec_always --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec_always --no-startup-id  nm-applet --indicator
     exec_always export $fcitx_env
-    exec_always --no-startup-id bash -c "sleep 0.3 && fcitx5"
-    # exec_always --no-startup-id fcitx5 &
+    exec_always --no-startup-id fcitx5 
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -113,6 +112,8 @@ set $fcitx_env \
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # Shutdown
+    bindsym $mod+Ctrl+x exec systemctl poweroff
 
 #
 # Moving around:
@@ -183,7 +184,15 @@ set $fcitx_env \
     bindsym $mod+Shift+w move workspace to output up
     # bindsym $mod+Shift+s move workspace to output down
 
+#
+# Assign softwares on workspaces
+#
+assign [app_id="$term"] 1
+assign [app_id="brave-browser"] 2
+assign [app_id="firefox"] 3
+assign [app_id="dolphin"] 4
 
+#
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
@@ -220,6 +229,7 @@ set $fcitx_env \
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
 #
 # Resizing containers:
 #
