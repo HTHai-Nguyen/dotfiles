@@ -1,4 +1,4 @@
---target=$HOME/.config 
+# --target=$HOME/.config 
 
 # ignore
 --ignore=.stowrc
