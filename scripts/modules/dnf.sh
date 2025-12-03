@@ -28,4 +28,4 @@ sudo dnf copr enable dejan/lazygit -y
 
 ## Call to install.sh
 export INSTALL_CMD="sudo dnf install -y"
-source ~/dotfiles/scripts/install.sh
+# source ~/dotfiles/scripts/install.sh

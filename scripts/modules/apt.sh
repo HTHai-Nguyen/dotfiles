@@ -8,5 +8,6 @@ echo "APT (Debian) detected"
 echo "=================================="
 
 ## Call to install.sh
-export INSTALL_CMD="sudo apt install -y"
-source ~/dotfiles/scripts/install.sh
+install_packages() {
+  sudo apt install -y "$@"
+}
