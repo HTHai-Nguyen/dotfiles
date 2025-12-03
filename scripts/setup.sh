@@ -7,10 +7,8 @@ echo
 echo "Automatically setup for $distro"
 echo "==============================================="
 
-for m in ~/dotfiles/scripts/modules/*.sh; do
-  # [[ "$(basename "$m")" == "install.sh" ]] && continue
-  [[ -x "$m" ]] && source "$m"
-done
+SCRIPTS_DIR="$HOME/dotfiles/scripts"
+"$SCRIPTS_DIR/install.sh"
 
 ## Stow dotfiles
 # source symlink.sh 2>/dev/null || true

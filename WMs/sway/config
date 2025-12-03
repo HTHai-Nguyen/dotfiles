@@ -40,7 +40,7 @@ input "1267:35:Elan_Touchpad" {
     natural_scroll enabled    # revert scroll
     scroll_method two_finger  # scroll by 2 fingers
 
-    pointer_accel 0.3         # spped cursor
+    pointer_accel 0.5         # spped cursor
     accel_profile adaptive    # profile speedup
 
     dwt enabled               # disable-while-typing
@@ -187,7 +187,7 @@ set $fcitx_env \
 #
 # Assign softwares on workspaces
 #
-assign [app_id="$term"] 1
+assign [app_id="ghostty"] 1
 assign [app_id="brave-browser"] 2
 assign [app_id="firefox"] 3
 assign [app_id="dolphin"] 4

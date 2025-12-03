@@ -4,31 +4,32 @@
 success_list=()
 fail_list=()
 already_list=()
+
 ## Function install packages & log results
-install_package() {
-  local pkg="$1"
-  output=$("$INSTALL_CMD" "$pkg" >/dev/null 2>&1)
-  exit_code=$?
+MODULES_DIR="$HOME/dotfiles/scripts/modules/"
 
-  if [[ $exit_code -eq 0 ]] && echo "$output" | grep -Eq "(Installing|Downloading|successfully)"; then
-    success_list+=("$pkg")
-  elif echo "$output" | grep -Eq "(already installed|no packages needed|nothing to do)"; then
-    already_list+=("$pkg")
-  else
-    fail_list+=("$pkg")
+PKG_MANAGER=""
+for m in "$MODULES_DIR"/*.sh; do 
+  if [ -f "$m" ]; then
+    base_name=$(basenamme "$m" .sh)
+    if command -v "$base_name" >/dev/null 2>&1; then
+      PKG_MANAGER="$base_name"
+      source "$m"
+      break
+    fi
   fi
-}
+done
 
-## Install common packages from packages.txt
-echo "========================================"
-echo "Install common packages"
-echo "========================================"
-while IFS= read -r line || [[ -n "$line" ]]; do
-  line="$(echo "$line" | xargs)"
-  [[ -z "$line" || "$line" =~ ^# ]] && continue
-  pkg="$(echo "$line" | cut -d' ' -f1)"
-  install_package "$pkg"
-done <~/dotfiles/scripts/packages.txt
+if [ -z "$PKG_MANAGER" ]; then
+  echo "No supported packages manager!"
+  exit 1 
+fi
+
+# Read packages from packages.txt & install it.
+if [ ! -f "$HOME/dotfiles/scripts/packages.txt"]
+  echo "packages.txt not found!"
+  exit 1 
+fi
 
 ## Oh-my-zsh
 # echo "======================"
