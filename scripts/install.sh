@@ -6,12 +6,13 @@ fail_list=()
 already_list=()
 
 ## Function install packages & log results
-MODULES_DIR="$HOME/dotfiles/scripts/modules/"
+MODULES_DIR="$HOME/dotfiles/scripts/modules"
 
 PKG_MANAGER=""
 for m in "$MODULES_DIR"/*.sh; do 
   if [ -f "$m" ]; then
-    base_name=$(basenamme "$m" .sh)
+    file_name="${m##*/}"
+    base_name="${file_name%.sh}"
     if command -v "$base_name" >/dev/null 2>&1; then
       PKG_MANAGER="$base_name"
       source "$m"
@@ -26,10 +27,16 @@ if [ -z "$PKG_MANAGER" ]; then
 fi
 
 # Read packages from packages.txt & install it.
-if [ ! -f "$HOME/dotfiles/scripts/packages.txt"]
+PACKAGES_FILE="$HOME/dotfiles/scripts/packages.txt"
+if [ ! -f "$PACKAGES_FILE"]
   echo "packages.txt not found!"
   exit 1 
 fi
+
+PACKAGES=$(grep -v '^#' "$PACKAGES_FILE" | tr '\n' ' ')
+echo "Deteced package manager: $PKG_MANAGER"
+echo "Installing packages: $PACKAGES"
+install_packages $PACKAGES
 
 ## Oh-my-zsh
 # echo "======================"
