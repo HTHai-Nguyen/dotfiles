@@ -5,7 +5,7 @@ set -euo pipefail
 distro=$(grep '^NAME=' /etc/os-release | cut -d= -f2 | tr -d '"')
 echo
 echo "Automatically setup for $distro"
-echo "================================"
+echo "==============================================="
 
 for m in ~/dotfiles/scripts/modules/*.sh; do
   # [[ "$(basename "$m")" == "install.sh" ]] && continue
@@ -18,7 +18,13 @@ done
 echo "======================================"
 echo "Finish setup for $distro"
 echo "======================================"
-fastfetch
+if command -v fastfetch >/dev/null 2>&1; then
+  fastfetch
+elif command -v neofetch >/dev/null 2>&1; then
+  neofetch
+else
+  echo "Neither fastfetch nor neofetch is installed."
+fi
 
 echo "============================================"
 echo "Set zsh as default shell "
