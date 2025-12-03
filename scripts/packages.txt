@@ -7,8 +7,8 @@ fastfetch
 # neofetch
 gnupg
 ca-certificates
-tlp # for laptop
-tlp-rdw # for laptop
+tlp
+tlp-rdw
 
 ## Coding packages
 neovim
