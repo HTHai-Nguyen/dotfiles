@@ -83,7 +83,14 @@ echo
 
 # multiplexers
 echo "=====Stow multiplexers====="
-auto_symlink "multiplexers" "$CONFIG_DIR"
+KEYBOARD_DIR="$DOTFILES_DIR/keyboards"
+if [ -d "$KEYBOARD_DIR/kanata" ]; then
+  stow -D "kanata" -d "$KEYBOARD_DIR" -t "$CONFIG_TARGET" >/dev/null 2>&1 || true
+  stow "kanata" -d "$KEYBOARD_DIR" -t "$CONFIG_TARGET"
+  echo "✔ Stowed keyboards/kanata → $CONFIG_TARGET"
+else
+  echo "⚠ keyboards/kanata missing → skipped"
+fi
 echo
 
 # neovim: select a distribution & uncomment it
