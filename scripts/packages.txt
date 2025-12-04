@@ -1,5 +1,6 @@
 ## System packages
 git
+stow
 curl
 btop
 # htop
@@ -7,8 +8,8 @@ fastfetch
 # neofetch
 gnupg
 ca-certificates
-tlp
-tlp-rdw
+# tlp
+# tlp-rdw
 
 ## Coding packages
 neovim
@@ -19,10 +20,9 @@ zoxide
 ripgrep
 bat
 eza
-stow
-nodejs
-npm
-lazygit
+# nodejs
+# npm
+# lazygit
 # docker
 # lazydocker
 # nginx
@@ -35,7 +35,7 @@ lazygit
 # ghostty
 # wezterm
 
-## Window Manager (WM)  
+## Window Manager (WM)
 # hyprland
 # niri
 # sway
