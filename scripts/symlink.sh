@@ -34,7 +34,7 @@ MODULES_DIR="$DOTFILES_DIR/scripts/modules"
 # fi
 
 # package installed check
-installed() {
+is_installed() {
   command -v "$1" >/dev/null 2>&1
   # local pkg="$1"
   # if pkg_installed "$pkg"; then
@@ -59,13 +59,39 @@ symlink() {
 
 auto_symlink() {
   local module="$1"
-  local target="$2"
-  local subdirs=$(find "$DOTFILES_DIR/$module" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
-  for sub in $subdirs; do
-    if installed "$sub"; then
-      symlink "$module/$sub" "$target"
+  local module_dir="$DOTFILES_DIR/$module"
+
+  [ -d "$module_dir" ] || return
+
+  echo -e "\n📦 Selectively stowing $module"
+
+  # Build ignore regex for packages NOT installed
+  local ignore_regex=""
+  for pkg_path in "$module_dir"/*; do
+    [ -d "$pkg_path" ] || continue
+    pkg="$(basename "$pkg_path")"
+
+    if ! is_installed "$pkg"; then
+      if [ -z "$ignore_regex" ]; then
+        ignore_regex="^$pkg$"
+      else
+        ignore_regex="$ignore_regex|^$pkg$"
+      fi
+      echo "⏭ Ignoring $pkg (not installed)"
+    else
+      echo "✔ Including $pkg"
     fi
   done
+
+  # Unstow first to avoid conflicts
+  stow -D "$module" -d "$DOTFILES_DIR" -t "$CONFIG_DIR" >/dev/null 2>&1 || true
+
+  # Stow with --ignore for packages not installed
+  if [ -n "$ignore_regex" ]; then
+    stow "$module" -d "$DOTFILES_DIR" -t "$CONFIG_DIR" --ignore="$ignore_regex"
+  else
+    stow "$module" -d "$DOTFILES_DIR" -t "$CONFIG_DIR"
+  fi
 }
 
 echo "Symboliclink configs using Stow"
@@ -78,14 +104,15 @@ echo
 
 # keyboards: only kanata (fixed, not auto)
 echo "=====Stow keyboards====="
-KEYBOARD_DIR="$DOTFILES_DIR/keyboards"
-if [ -d "$KEYBOARD_DIR/kanata" ]; then
-    stow -D "kanata" -d "$KEYBOARD_DIR" -t "$CONFIG_TARGET" >/dev/null 2>&1 || true
-    stow "kanata" -d "$KEYBOARD_DIR" -t "$CONFIG_TARGET"
-    echo "✔ Stowed keyboards/kanata → $CONFIG_TARGET"
-else
-    echo "⚠ keyboards/kanata missing → skipped"
-fiecho
+symlink "keyboards" "$CONFIG_DIR"
+# if [ -d "$KEYBOARD_DIR/keyboards/kanata" ]; then
+#   stow -D "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" >/dev/null 2>&1 || true
+#   stow "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" --ignore="config.kbd" --ignore="qmk"
+#   echo "Stowed keyboards/kanata → $CONFIG_DIR"
+# else
+#   echo "keyboards/kanata missing → skipped"
+# fi
+echo
 
 # multiplexers
 echo "=====Stow multiplexers====="
@@ -100,27 +127,23 @@ echo "=====Stow neovim/?====="
 # symlink "neomvim/kickstart" "$CONFIG_DIR"
 echo
 
-# scripts: ignore
-echo "=====Scripts ignore====="
-echo
-
 # statusbars
 echo "=====Stow statusbars======"
 auto_symlink "statusbars" "$CONFIG_DIR"
 echo
 
 # terminals
-echo "Stow terminals"
+echo "=====Stow terminals====="
 auto_symlink "terminals" "$CONFIG_DIR"
 echo
 
 # tools
-echo "Stow tools"
+echo "=====Stow tools====="
 auto_symlink "tools" "$CONFIG_DIR"
 echo
 
 # Window manager
-echo "Stow window manager"
+echo "=====Stow window manager====="
 auto_symlink "WMs" "$CONFIG_DIR"
 
 echo

@@ -1,8 +1,11 @@
-# --target=$HOME/.config 
+## Config for stow
+--target=$HOME/.config
+--verbose=2
 
-# ignore
+## Ignore modules in dotfilies
 --ignore=.stowrc
 --ignore=neovim
 --ignore=windows
 --ignore=scripts
---ignore=keyboards
+--ignore=keyboards/qmk
+--ignore=keyboards/config.kbd
