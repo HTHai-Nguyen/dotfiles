@@ -22,21 +22,22 @@ if [ -z "$PKG_MANAGER" ]; then
   exit 1
 fi
 
-# Read packages from packages.txt & install it.
-PACKAGES_FILE="$HOME/dotfiles/scripts/packages.txt"
-if [ ! -f "$PACKAGES_FILE" ]; then
-  echo "packages.txt not found!"
-  exit 1
-fi
-
 echo "Deteced package manager: $PKG_MANAGER"
 
 ## List of packages that have been successfully or failed installed
 success_list=()
 fail_list=()
 
-PACKAGES=$(grep -v '^#' "$PACKAGES_FILE" | tr '\n' ' ')
-for pkg in $PACKAGES; do
+# Read packages from packages.sh & install it.
+PACKAGES_FILE="$HOME/dotfiles/scripts/packages.sh"
+if [ ! -f "$PACKAGES_FILE" ]; then
+  echo "packages.txt not found!"
+  exit 1
+fi
+
+source $HOME/dotfiles/scripts/packages.sh
+# PACKAGES=$(grep -v '^#' "$PACKAGES_FILE" | tr '\n' ' ')
+for pkg in "${PACKAGES[@]}"; do
   if install_package "$pkg"; then
     success_list+=("$pkg")
   else
