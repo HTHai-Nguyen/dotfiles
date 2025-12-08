@@ -17,6 +17,7 @@ PACKAGES=(
   ## Coding packages
   neovim
   zsh
+  # fish
   tmux
   fzf
   zoxide
@@ -30,7 +31,6 @@ PACKAGES=(
   # lazydocker
   # nginx
   # podman
-  # postman
 
   ## Terminal Emulator
   # alacritty
