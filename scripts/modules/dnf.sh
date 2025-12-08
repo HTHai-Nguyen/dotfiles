@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-command -v dnf >/dev/null 2>&1 || return 0
+detect() {
+  command -v dnf >/dev/null 2>&1 || return 0
+}
 
 echo
 echo "======================"
@@ -26,6 +28,14 @@ sudo dnf copr enable alternateved/eza -y
 sudo dnf copr enable dejan/lazygit -y
 # sudo dnf copr enable -y
 
-## Call to install.sh
-export INSTALL_CMD="sudo dnf install -y"
-source ~/dotfiles/scripts/install.sh
+## Function install package
+install_package() {
+  sudo dnf install -y "$1"
+  return $?
+}
+
+## Function find all packages installed
+pkg_installed() {
+  local pkg="$1"
+  dnf list installed "$pkg" >/dev/null 2>&1
+}
