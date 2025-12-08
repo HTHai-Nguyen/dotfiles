@@ -1,34 +1,50 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+MODULES_DIR="$HOME/dotfiles/scripts/modules"
+
+# Detect package manager
+PKG_MANAGER=""
+for m in "$MODULES_DIR"/*.sh; do
+  if [ -f "$m" ]; then
+    base_name=$(basename "$m" .sh)
+    # file_name="${m##*/}"  # If basename command not found
+    # base_name="${file_name%.sh}"
+    if command -v "$base_name" >/dev/null 2>&1; then
+      PKG_MANAGER="$base_name"
+      source "$m"
+      break
+    fi
+  fi
+done
+
+if [ -z "$PKG_MANAGER" ]; then
+  echo "No supported packages manager!"
+  exit 1
+fi
+
+echo "Deteced package manager: $PKG_MANAGER"
 
 ## List of packages that have been successfully or failed installed
 success_list=()
 fail_list=()
-already_list=()
-## Function install packages & log results
-install_package() {
-  local pkg="$1"
-  output=$("$INSTALL_CMD" "$pkg" >/dev/null 2>&1)
-  exit_code=$?
 
-  if [[ $exit_code -eq 0 ]] && echo "$output" | grep -Eq "(Installing|Downloading|successfully)"; then
+# Read packages from packages.sh & install it.
+PACKAGES_FILE="$HOME/dotfiles/scripts/packages.sh"
+if [ ! -f "$PACKAGES_FILE" ]; then
+  echo "packages.txt not found!"
+  exit 1
+fi
+
+source $HOME/dotfiles/scripts/packages.sh
+# PACKAGES=$(grep -v '^#' "$PACKAGES_FILE" | tr '\n' ' ')
+for pkg in "${PACKAGES[@]}"; do
+  if install_package "$pkg"; then
     success_list+=("$pkg")
-  elif echo "$output" | grep -Eq "(already installed|no packages needed|nothing to do)"; then
-    already_list+=("$pkg")
   else
     fail_list+=("$pkg")
   fi
-}
-
-## Install common packages from packages.txt
-echo "========================================"
-echo "Install common packages"
-echo "========================================"
-while IFS= read -r line || [[ -n "$line" ]]; do
-  line="$(echo "$line" | xargs)"
-  [[ -z "$line" || "$line" =~ ^# ]] && continue
-  pkg="$(echo "$line" | cut -d' ' -f1)"
-  install_package "$pkg"
-done <~/dotfiles/scripts/packages.txt
+  echo
+done
 
 ## Oh-my-zsh
 # echo "======================"
@@ -98,7 +114,7 @@ echo "📦 Installation Summary"
 echo "=================================="
 ## success_list
 if [ ${#success_list[@]} -gt 0 ]; then
-  echo "✅ Installed successfully:"
+  echo "✅ Installed successfully [${#success_list[@]}]:"
   for pkg in "${success_list[@]}"; do
     echo "   - $pkg"
   done
@@ -106,20 +122,9 @@ else
   echo "⚠️  No packages installed successfully."
 fi
 
-# already_list
-echo
-if [ ${#already_list[@]} -gt 0 ]; then
-  echo "✅ Installed already:"
-  for pkg in "${already_list[@]}"; do
-    echo "   - $pkg"
-  done
-else
-  echo "No packages installed already."
-fi
-
 # fail_list
 if [ ${#fail_list[@]} -gt 0 ]; then
-  echo "❌ Failed to install:"
+  echo "❌ Failed to install [${#fail_list[@]}]:"
   for pkg in "${fail_list[@]}"; do
     echo "   - $pkg"
   done
