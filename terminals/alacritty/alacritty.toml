@@ -10,8 +10,8 @@ startup_mode = "Fullscreen"
 resize_increments = true
 
 [font]
-normal = { family = "DejaVuSansMono", style = "Regular" }
-size = 13.5
+normal = { family = "AnonymiceProNerdFontMono", style = "Regular" }
+size = 9
 
 [colors]
 transparent_background_colors = true

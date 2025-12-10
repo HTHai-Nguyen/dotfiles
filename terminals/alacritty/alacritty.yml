@@ -1,0 +1,38 @@
+#  import:
+#    - ~/.config/alacritty/alacritthemes/efocado_dark.toml
+live_config_reload: true
+
+env:
+  TERM: alacritty
+
+window:
+  dynamic_padding: true
+  decorations: none
+  startup_mode: Maximized
+  resize_increments: true
+  opacity: 0.79
+
+font:
+  normal:
+    family: LilexNerdFont
+    style: Regular
+  size: 11
+  vi_mode_cursor: 
+    text: "#lalala"
+    cursor: "#d8dee9"
+
+colors:
+  transparent_background_colors: true
+
+mouse:
+  hide_when_typing: true
+
+terminal:
+  osc52: CopyPaste
+
+selection:
+  save_to_clipboard: true
+
+scrolling:
+  history: 999
+  multiplier: 5
