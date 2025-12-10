@@ -1,0 +1,1 @@
+/home/kaidtix/.local/share/omf/themes/one/fish_prompt.fish
