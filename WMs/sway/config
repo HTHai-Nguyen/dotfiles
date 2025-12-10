@@ -31,22 +31,18 @@ output DP-1 bg ~/wallpapers/wallpaper01.jpg fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+#
 ### Input configuration
 #
 input "1267:35:Elan_Touchpad" {
     tap enabled               # tap-to-click
     tap_button_map lrm        # tap 1=left, 2=right, 3=middle
-
     natural_scroll enabled    # revert scroll
     scroll_method two_finger  # scroll by 2 fingers
-
     pointer_accel 0.5         # spped cursor
     accel_profile adaptive    # profile speedup
-
     dwt enabled               # disable-while-typing
-
     middle_emulation enabled  # nhấn 2 ngón = nút giữa
-
     click_method button_areas # dùng 2 vùng click vật lý ThinkPad
 }
 #
@@ -187,7 +183,7 @@ set $fcitx_env \
 #
 # Assign softwares on workspaces
 #
-assign [app_id="ghostty"] 1
+assign [app_id="$term"] 1
 assign [app_id="brave-browser"] 2
 assign [app_id="firefox"] 3
 assign [app_id="dolphin"] 4
