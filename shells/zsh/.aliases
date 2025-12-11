@@ -1,0 +1,74 @@
+# .aliases - Alias for package managers, sorted by package manager
+
+# Detect the distro and set the corresponding package manager aliases
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    
+    # Pacman (Arch Linux, Manjaro)
+    if [[ "$ID" == "arch" ]]; then
+        alias update="sudo pacman -Syu --no-confirm"
+        alias upgrade="sudo pacman -Syu --no-confirm"
+        alias install="sudo pacman -S --no-confirm"
+        alias remove="sudo pacman -R --no-confirm"
+        alias uninstall="sudo pacman -R --no-confirm"
+        # alias search="pacman -Ss"
+        search() { pacman -Ss "$@" | awk '{print $1}' }
+
+    # Apt (Ubuntu, Debian, Linux Mint)
+    elif [[ "$ID" == "ubuntu" || "$ID" == "debian" || "$ID" == "linuxmint" ]]; then
+        alias update="sudo apt update -y"
+        alias upgrade="sudo apt upgrade -y"
+        alias install="sudo apt install -y"
+        alias remove="sudo apt remove -y"
+        alias uninstall="sudo apt purge -y"
+        alias list="apt list"
+        # alias search="apt search"
+        search() { apt search "$@" | awk '{print $1}' }
+
+    # Dnf (Fedora, RHEL, CentOS)
+    elif [[ "$ID" == "fedora" || "$ID" == "rhel" ]]; then
+        alias update="sudo dnf update -y"
+        alias upgrade="sudo dnf upgrade -y"
+        alias install="sudo dnf install -y"
+        alias remove="sudo dnf remove -y"
+        alias uninstall="sudo dnf remove -y"
+        alias list="dnf list"
+        # alias search="dnf search"
+        search() { dnf search "$@" | awk '{print $1}' }
+
+    # Zypper (openSUSE)
+    elif [[ "$ID" == "opensuse" || "$ID" == "suse" ]]; then
+        alias update="sudo zypper refresh -y"
+        alias upgrade="sudo zypper update -y"
+        alias install="sudo zypper install -y"
+        alias remove="sudo zypper remove -y"
+        alias uninstall="sudo zypper remove -y"
+        # alias search="zypper search"
+        search() { zypper search "$@" | awk '{print $1}' }
+
+    # Xbps (Void Linux)
+    elif [[ "$ID" == "void" ]]; then
+        alias update="sudo xbps-install -S -y"
+        alias upgrade="sudo xbps-install -u -y"
+        alias install="sudo xbps-install -y"
+        alias remove="sudo xbps-remove -y"
+        alias uninstall="sudo xbps-remove -y"
+        # alias search="xbps-query -Rs"
+        search() { xbps-query -Rs "$@" | awk '{print $1}' }
+
+    # Nix (NixOS, or other systems with Nix installed)
+    elif [[ "$ID" == "nixos" || "$ID" == "nix" ]]; then
+        alias nupdate="nix-channel --update"
+        alias nupgrade="nix-env -u"
+        alias ninstall="nix-env -i"
+        alias nremove="nix-env -e"
+        alias nuninstall="nix-env -e"
+        # alias nsearch="nix-env -qa"
+        search() { nix-env -qa "$@" | awk '{print $1}' }
+
+    # If the distro is not recognized
+    else
+        echo "Distro not supported for these aliases!"
+    fi
+fi
+
