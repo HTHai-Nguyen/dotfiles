@@ -1,1 +1,1 @@
-/home/kaidtix/.local/share/omf/themes/one/fish_prompt.fish
+/home/kaidtix/.local/share/omf/themes/zeit/fish_prompt.fish
