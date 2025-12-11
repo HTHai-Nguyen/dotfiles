@@ -1,6 +1,6 @@
 if status is-interactive
-    ## source Aliases
-    source ~/.config/fish/aliases.fish
+    export PATH="$PATH:/opt/nvim/"
+
     ## Start TMUX
 #    and not set -q TMUX
 #    if tmux has-session -t main 2>/dev/null
@@ -12,5 +12,7 @@ if status is-interactive
     zoxide init fish | source
 
     ## Aliases
+    source ~/.config/fish/aliases.fish
     alias bat='batcat'
+    alias vi='nvim'
 end
