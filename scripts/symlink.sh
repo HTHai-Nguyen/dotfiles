@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 # GNU Stow format XDG except .zshrc & .bashrc
 
 set -euo pipefail
@@ -12,26 +10,6 @@ DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 HOME_DIR="$HOME"
 MODULES_DIR="$DOTFILES_DIR/scripts/modules"
-
-# Detect package manager
-# PKG_MANGER=""
-# for m in "$MODULES_DIR"/*.sh; do
-#   if [ -f "$m" ]; then
-#     base_name=$(basename "$m" .sh)
-#     # file_name="${m##*/}"  # If basename command not found
-#     # base_name="${file_name%.sh}"
-#     if command -v "$base_name" >/dev/null 2>&1; then
-#       PKG_MANAGER="$base_name"
-#       source "$m"
-#       break
-#     fi
-#   fi
-# done
-#
-# if [ -z "$PKG_MANAGER" ]; then
-#   echo "No supported packages manager!"
-#   exit 1
-# fi
 
 # package installed check
 is_installed() {
@@ -99,7 +77,14 @@ cd "$DOTFILES_DIR"
 
 # shells: stow all into $HOME
 echo "=====Stow shells====="
-symlink "shells" "$HOME_DIR"
+if command -v fish >/dev/null 2>&1; then
+    echo "Start stow fish to $HOME/.config"
+    symlink "shells" "$CONFIG_DIR"
+fi
+if command -v zsh >/dev/null 2>&1; then
+    echo "Start stow zsh to $HOME"
+    stow zsh -d ~/dotfiles/shells/ -t "$HOME_DIR"
+fi
 echo
 
 # keyboards: only kanata (fixed, not auto)
