@@ -1,29 +1,21 @@
 #!/bin/bash
 
 PACKAGES=(
-  ## System packages
+  ### System packages ###
   git
   stow
   curl
   btop
   # htop
-  fastfetch
-  # neofetch
   gnupg
-  ca-certificates
+  # ca-certificates # for Debian/Ubuntu
   # tlp
   # tlp-rdw
 
-  ## Coding packages
+  ### Coding packages ###
   neovim
   zsh
   # fish
-  tmux
-  fzf
-  zoxide
-  ripgrep
-  bat
-  eza
   # nodejs
   # npm
   # lazygit
@@ -32,13 +24,32 @@ PACKAGES=(
   # nginx
   # podman
 
-  ## Terminal Emulator
+  ### Tools ###
+  ## General (X11 & Wayland)
+  tmux
+  fzf
+  ripgrep
+  bat
+  zoxide
+  aria2
+  # eza
+  fastfetch
+  # neofetch  # if pkgman doesn't have fastfetch
+  ## For Wayland
+  # fuzzel
+  ## For X11
+  # picom 
+  # nitrogen
+  # rofi
+  # flameshot 
+
+  ### Terminal Emulator ###
   # alacritty
   # kitty
   # ghostty
   # wezterm
 
-  ## Window Manager (WM)
+  ### Window Manager (WM) ###
   # hyprland
   # niri
   # sway
@@ -48,22 +59,17 @@ PACKAGES=(
   # qtile
   # xmonad
   # leftwm
-  # spectrwm
   # herbstluftwm
   # dwm
 
-  ## Status bar
+  ### Status bar ###
   # waybar
   # polybar
-  # i3blocks
   # xmobar
 
-  ## Veitnamese input
+  ### Veitnamese input ###
   fcitx5
   fctix5-unikey
   # fctix5-bamboo
   fcitx5-configtool
-
-  ## Others packages
-  aria2
 )
