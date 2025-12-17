@@ -50,7 +50,7 @@ update_geom() {
   hc move_monitor "$monitor" $geom
 }
 
-steps=${ANIMATION_STEPS:-15}
+steps=${ANIMATION_STEPS:-10}
 interval=${ANIMATION_INTERVAL:-0.01}
 
 animate() {

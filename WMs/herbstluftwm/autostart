@@ -12,7 +12,8 @@ sleep 1
 
 xsetroot -solid '#5A8E3A'
 
-MyTerminal=alacritty
+MainTerminal=alacritty
+SubTerminal=kitty
 
 # wallpaper nitrogen
 nitrogen --restore &
@@ -37,8 +38,10 @@ Mod=Mod4 # Use the super key as the main modifier
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
+hc keybind $Mod-Control-x spawn sudo shutdown now
 ## keybind launch apps
-hc keybind $Mod-Return spawn $MyTerminal
+hc keybind $Mod-Return spawn $MainTerminal
+hc keybind $Mod-Shift-Return spawn $SubTerminal
 hc keybind $Mod-space spawn rofi -modi "drun,filebrowser,run" -show combi -combi-modes "drun,filebrowser,run"
 
 # basic movement in tiling and floating mode
@@ -77,7 +80,7 @@ hc keybind $Mod-Control-Up resize up +$resizestep
 hc keybind $Mod-Control-Right resize right +$resizestep
 
 # scratchpads
-hc keybind $Mod-minus spawn $HOME/dotfiles/WMs/herbstluftwm/scripts/scratch.sh scratch
+hc keybind $Mod-0 spawn $HOME/dotfiles/WMs/herbstluftwm/scripts/scratch.sh scratch
 hc rule title~'scratchpad' floating=on floatplacement=center floating_geometry=800x400
 hc rule title~'notes' floating=on floatplacement=center floating_geometry=800x400
 
@@ -147,7 +150,7 @@ hc set show_frame_decorations 'none'
 hc set frame_bg_transparent on
 hc set frame_transparent_width 0
 hc set frame_gap 2
-hc set default_frame_layout = vertical
+hc set default_frame_layout vertical
 
 hc attr theme.title_height 15
 hc attr theme.title_when never
