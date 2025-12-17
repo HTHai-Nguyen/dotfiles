@@ -6,7 +6,7 @@ detect() {
 
 echo
 echo "=================================="
-echo "APT (Debian) detected"
+echo "PACMAN (Arch-based) detected"
 echo "=================================="
 
 ## Call to install.sh

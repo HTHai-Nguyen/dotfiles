@@ -6,7 +6,7 @@ detect() {
 
 echo
 echo "======================"
-echo "DNF (Fedora) detected"
+echo "DNF (Fedora-based) detected"
 echo "======================"
 
 ## RPM Fusion

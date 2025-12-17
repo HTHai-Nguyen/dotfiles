@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 detect() {
-  command -v apt >/dev/null 2>&1 || return 0
+  command -v xbps-install >/dev/null 2>&1 || return 0
 }
 
 echo
 echo "=================================="
-echo "APT (Debian-based) detected"
+echo "XBPS (Void-based) detected"
 echo "=================================="
 
 ## Call to install.sh
 install_package() {
-  sudo apt install -y "$1"
+  sudo xbps-install -y "$1"
   return $?
 }
 
