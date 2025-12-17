@@ -39,6 +39,8 @@ PACKAGES=(
   zoxide
   aria2
   fastfetch
+  # fd        # for rolling release
+  fd-find
   # neofetch  # if pkgman doesn't have fastfetch
   # eza
   # yazi      # preview image not work for alacritty
@@ -46,7 +48,7 @@ PACKAGES=(
 
   ## For Wayland ##
   # fuzzel
-  # rofi-waylan
+  # rofi-wayland
 
   ## For X11 ##
   # picom
@@ -69,7 +71,8 @@ PACKAGES=(
   # niri
   # sway
   # i3
-  # bspwm
+  bspwm
+  sxhkd # keybinding for bspwm
   # awesome
   # qtile
   # xmonad
@@ -87,8 +90,14 @@ PACKAGES=(
   ########################
   ### Vietnamese input ###
   ########################
-  fcitx5
-  fctix5-unikey
+  # fcitx5
+  # fctix5-unikey
   # fctix5-bamboo
-  fcitx5-configtool
+  # fcitx5-configtool
+
+  ###################
+  ### Appications ###
+  ###################
+  # firefox
+  # firefox-esr     # firefox stable & less features
 )

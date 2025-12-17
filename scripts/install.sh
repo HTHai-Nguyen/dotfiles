@@ -4,31 +4,21 @@ MODULES_DIR="$HOME/dotfiles/scripts/modules"
 
 # Detect package manager
 PKG_MANAGER=""
-## fallback
-# for m in "$MODULES_DIR"/*.sh; do
-#   if [ -f "$m" ]; then
-#     base_name=$(basename "$m" .sh)
-#     # file_name="${m##*/}"  # If basename command not found
-#     # base_name="${file_name%.sh}"
-#     if command -v "$base_name" >/dev/null 2>&1; then
-#       PKG_MANAGER="$base_name"
-#       source "$m"
-#       break
-#     fi
-#   fi
-# done
-#
-## new
 for m in "$MODULES_DIR"/*.sh; do
-  source "$m"
-  if detect; then
-    PKG_MANAGER="$(basename "$m" .sh)"
-    break
+  if [ -f "$m" ]; then
+    base_name=$(basename "$m" .sh)
+    # file_name="${m##*/}"  # If basename command not found
+    # base_name="${file_name%.sh}"
+    if command -v "$base_name" >/dev/null 2>&1; then
+      PKG_MANAGER="$base_name"
+      source "$m"
+      break
+    fi
   fi
 done
 
 if [ -z "$PKG_MANAGER" ]; then
-  echo "No supported packages manager!"
+  echo "No supported package manager!"
   exit 1
 fi
 
