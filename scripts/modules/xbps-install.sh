@@ -18,5 +18,5 @@ install_package() {
 ## Function find all packags installed
 pkg_installed() {
   local pkg="$1"
-  dpkg -s "$pkg" >/dev/null 2>&1
+  xbps-query -Rs "^${pkg}$" >/dev/null 2>&1
 }
