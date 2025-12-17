@@ -42,8 +42,8 @@ input "1267:35:Elan_Touchpad" {
     pointer_accel 0.5         # spped cursor
     accel_profile adaptive    # profile speedup
     dwt enabled               # disable-while-typing
-    middle_emulation enabled  # nhấn 2 ngón = nút giữa
-    click_method button_areas # dùng 2 vùng click vật lý ThinkPad
+    middle_emulation enabled  # click 2 finger = middle-click
+    click_method button_areas # use 2 physical click-region ThinkPad
 }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -77,9 +77,9 @@ set $fcitx_env \
 
     # Autostart
     exec_always --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec_always --no-startup-id  nm-applet --indicator
-    exec_always export $fcitx_env
-    exec_always --no-startup-id fcitx5 
+    exec_always --no-startup-id  nm-applet --indicator &
+    exec_always export $fcitx_env &
+    exec_always --no-startup-id fcitx5 &
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -149,7 +149,6 @@ set $fcitx_env \
     set $ws7 7
     set $ws8 8
     set $ws9 9
-    set $ws10 10
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -160,7 +159,6 @@ set $fcitx_env \
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number $ws1; workspace $ws1
     bindsym $mod+Shift+2 move container to workspace number $ws2; workspace $ws2
@@ -171,7 +169,6 @@ set $fcitx_env \
     bindsym $mod+Shift+7 move container to workspace number $ws7; workspace $ws7
     bindsym $mod+Shift+8 move container to workspace number $ws8; workspace $ws8
     bindsym $mod+Shift+9 move container to workspace number $ws9; workspace $ws9
-    bindsym $mod+Shift+0 move container to workspace number $ws10; workspace $ws10
     # Note: workspaces can have any name you want, not just numbers.
  
     # Move workspace betwwen monitors
@@ -220,36 +217,36 @@ assign [app_id="dolphin"] 4
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+0 move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+0 scratchpad show
 
 #
 # Resizing containers:
 #
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 5px
-    bindsym $down resize grow height 5px
-    bindsym $up resize shrink height 5px
-    bindsym $right resize grow width 5px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 5px
-    bindsym Down resize grow height 5px
-    bindsym Up resize shrink height 5px
-    bindsym Right resize grow width 5px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
+# mode "resize" {
+#     bindsym $left resize shrink width 5px
+#     bindsym $down resize grow height 5px
+#     bindsym $up resize shrink height 5px
+#     bindsym $right resize grow width 5px
+#
+#     # Ditto, with arrow keys
+#     bindsym Left resize shrink width 5px
+#     bindsym Down resize grow height 5px
+#     bindsym Up resize shrink height 5px
+#     bindsym Right resize grow width 5px
+#
+#     # Return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+r mode "resize"
+bindsym $mod+Ctrl+h resize shrink width 5px
+bindsym $mod+Ctrl+j resize grow height 5px
+bindsym $mod+Ctrl+k resize shrink height 5px
+bindsym $mod+Ctrl+l resize grow width 5px
 
 #
 # Utilities:
