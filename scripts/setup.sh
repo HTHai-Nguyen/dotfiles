@@ -7,7 +7,7 @@ echo
 echo "Automatically setup for $distro"
 echo "==============================================="
 
-## Package manager install pacages
+## Package manager install packages
 SCRIPTS_DIR="$HOME/dotfiles/scripts"
 "$SCRIPTS_DIR/install.sh"
 

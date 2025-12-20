@@ -88,15 +88,15 @@ fi
 echo
 
 # keyboards: only kanata (fixed, not auto)
+KEYBOARD_DIR=$HOME/dotfiles
 echo "=====Stow keyboards====="
-symlink "keyboards" "$CONFIG_DIR"
-# if [ -d "$KEYBOARD_DIR/keyboards/kanata" ]; then
-#   stow -D "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" >/dev/null 2>&1 || true
-#   stow "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" --ignore="config.kbd" --ignore="qmk"
-#   echo "Stowed keyboards/kanata → $CONFIG_DIR"
-# else
-#   echo "keyboards/kanata missing → skipped"
-# fi
+if command -v kanata >/dev/null 2>&1; then
+  stow -D "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" >/dev/null 2>&1 || true
+  stow "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" --ignore="config.kbd" --ignore="qmk"
+  echo "Stowed keyboards/kanata → $CONFIG_DIR"
+else
+  echo "keyboards/kanata missing → skipped"
+fi
 echo
 
 # multiplexers

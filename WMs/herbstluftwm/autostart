@@ -14,6 +14,7 @@ xsetroot -solid '#5A8E3A'
 
 MainTerminal=alacritty
 SubTerminal=kitty
+FileManager=rox-filer
 
 # wallpaper nitrogen
 nitrogen --restore &
@@ -43,13 +44,10 @@ hc keybind $Mod-Control-x spawn sudo shutdown now
 hc keybind $Mod-Return spawn $MainTerminal
 hc keybind $Mod-Shift-Return spawn $SubTerminal
 hc keybind $Mod-space spawn rofi -modi "drun,filebrowser,run" -show combi -combi-modes "drun,filebrowser,run"
+hc keybind $Mod-e spawn $FileManager
 
 # basic movement in tiling and floating mode
 # focusing clients
-hc keybind $Mod-Left focus left
-hc keybind $Mod-Down focus down
-hc keybind $Mod-Up focus up
-hc keybind $Mod-Right focus right
 hc keybind $Mod-h focus left
 hc keybind $Mod-j focus down
 hc keybind $Mod-k focus up

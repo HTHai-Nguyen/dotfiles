@@ -11,7 +11,7 @@ echo "=================================="
 
 ## Call to install.sh
 install_package() {
-  sudo pacman -S --no-confirm "$1"
+  sudo pacman -S --noconfirm "$1"
   return $?
 }
 
