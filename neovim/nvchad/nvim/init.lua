@@ -41,3 +41,14 @@ end)
 
 vim.o.scrolloff = 999
 vim.o.relativenumber = true
+
+-- Load keymap of fzf-lua for Dashboard
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "nvdash",
+  callback = function()
+    local opts = { buffer = true, silent = true }
+    vim.keymap.set("n", "ff", "<cmd>FzfLua files<cr>", opts)
+    vim.keymap.set("n", "fw", "<cmd>FzfLua live_grep<cr>", opts)
+    vim.keymap.set("n", "fo", "<cmd>FzfLua oldfiles<cr>", { buffer = true })
+  end,
+})
