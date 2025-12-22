@@ -1,12 +1,10 @@
 general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
-  # Example: The below command launches Zebar.
   # startup_commands: ['shell-exec zebar']
   startup_commands: []
 
   # Commands to run just before the WM is shutdown.
-  # Example: The below command kills Zebar.
   # shutdown_commands: ['shell-exec taskkill /IM zebar.exe /F']
   shutdown_commands: []
   # Commands to run after the WM config is reloaded.
@@ -60,7 +58,7 @@ window_effects:
     # Highlight the window with a colored border.
     # ** Exclusive to Windows 11 due to API limitations.
     border:
-      enabled: false
+      enabled: true
       color: '#6AECF0'
 
     # Remove the title bar from the window's frame. Note that this can
@@ -71,7 +69,7 @@ window_effects:
     # Change the corner style of the window's frame.
     # ** Exclusive to Windows 11 due to API limitations.
     corner_style:
-      enabled: true
+      enabled: false
       # Allowed values: 'square', 'rounded', 'small_rounded'.
       style: 'square'
 
@@ -90,7 +88,7 @@ window_effects:
     hide_title_bar:
       enabled: true
     corner_style:
-      enabled: true
+      enabled: false
       style: 'square'
     transparency:
       enabled: true
@@ -157,7 +155,12 @@ window_rules:
       - window_process: { equals: 'Code'}
   - commands: ['move --workspace t', 'focus --workspace t']
     match:
-      - window_process: { equals: 'alacritty'}
+      - window_process: { equals: 'wezterm-gui'}
+      - window_process: { equals: 'WindowsTerminal'}
+  - commands: ['move --workspace 9', 'focus --workspace 9']
+    match:
+      - window_process: { equals: 'Telegram'}
+      - window_process: { equals: 'Zalo'}
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
@@ -185,9 +188,11 @@ workspaces:
   - name: 'n'
     display_name: "Notes"
   - name: 't'
-    display_name: "Terminal"
+    display_name: "Term"
   - name: 'c'
     display_name: "Code"
+  - name: '9'
+    display_name: "Chat"
 
 keybindings:
   # Shift focus in a given direction.
@@ -275,8 +280,8 @@ keybindings:
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-  - commands: ['shell-exec alacritty']
-    bindings: ['ctrl+alt+t']
+  - commands: ['shell-exec --hide-window wezterm']
+    bindings: ['alt+enter']
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
@@ -301,6 +306,8 @@ keybindings:
     bindings: ['alt+5']
   - commands: ['focus --workspace 6']
     bindings: ['alt+6']
+  - commands: ['focus --workspace 9']
+    bindings: ['alt+9']
   - commands: ['focus --workspace n']
     bindings: ['alt+n']
   - commands: ['focus --workspace t']
@@ -332,6 +339,8 @@ keybindings:
     bindings: ['alt+shift+5']
   - commands: ['move --workspace 6', 'focus --workspace 6']
     bindings: ['alt+shift+6']
+  - commands: ['move --workspace 9', 'focus --workspace 9']
+    bindings: ['alt+shift+9']
   - commands: ['move --workspace n', 'focus --workspace n']
     bindings: ['alt+shift+n']
   - commands: ['move --workspace t', 'focus --workspace t']
