@@ -1,0 +1,7 @@
+[user]
+	name = HTHai-Nguyen
+	email = 21520808@ms.uit.edu.vn
+[core]
+	editor = nvim
+[safe]
+	directory = S:/Xplat/dotfiles
