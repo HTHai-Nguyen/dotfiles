@@ -7,7 +7,7 @@
 $themeDir = "D:\Application\Scoop\apps\oh-my-posh\current\themes"
 
 # File to store the default theme name
-$themeConfig = "D:\Application\Scoop\apps\oh-my-posh\default-omp-theme.txt"
+$themeConfig = "$HOME\Documents\PowerShell\default-omp-theme.txt"
 
 # Function to switch theme
 function theme {
