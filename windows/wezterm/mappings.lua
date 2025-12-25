@@ -63,6 +63,7 @@ M.keys = {
   --- Tabs / Windows ---
   -- Create new tab
   { key = 'c', mods = 'LEADER', action = act.SpawnTab('CurrentPaneDomain'), },
+  { key = 't', mods = 'CTRL', action = act.ShowLauncher, },
 
   -- Switch tabs
   { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative(1) },
@@ -114,13 +115,33 @@ M.keys = {
       name = 'resize_pane',
       one_shot = false,
     },
-  },  -- Reload config
+  },
+
+  -- Reload config
   {
     key = 'R', mods = 'LEADER|SHIFT', action = act.ReloadConfiguration,
   },
 
-}
+  --- Resurrection ---
+  -- Save resurrect
+  {
+    key = 's', mods = 'LEADER|CTRL',
+    action = wezterm.action_callback(function(win, pane)
+      resurrect.save_state(resurrect.workspace_state.get_workspace_state())
+    end),
+  },
+  -- Reload resurrect
+  {
+    key = 'r', mods = 'LEADER|CTRL',
+    action = wezterm.action_callback(function(win, pane)
+      resurrect.fuzzy_load(win, pane, function(id, lable)
+        id = string.match(id, "([^/]+)$")
+        resurrect.workspace_state.restore_workspace_state(resurrect.load_state(id, "workspace"))
+      end)
+    end),
+  },
 
+}
 
 -- Key tables for resize
 M.key_tables = {
