@@ -68,7 +68,7 @@ local colors = {
   black = '#414868',
   green = '#9ece6a',
   yellow = '#e0af68',
-  red = '#f77f68e',
+  red = '#f77f68',
   gray = '#565f89',
 }
 
@@ -79,9 +79,15 @@ wezterm.on('update-status', function(window, pane)
   local date = wezterm.strftime('%b-%d-%Y')
   local time = wezterm.strftime('%H:%M')
   local hostname = wezterm.hostname()
+  local resize = window:active_key_table()
 
   window:set_right_status(wezterm.format({
     --- Right status
+    -- Resize mode
+    { Background = { Color = colors.bg } },
+    { Foreground = { Color = colors.red } },
+    { Text = resize and ('' .. resize .. ' ') or '', },
+
     -- TIME
     { Foreground = { Color = colors.magenta } },
     { Background = { Color = colors.bg } },
@@ -122,7 +128,6 @@ wezterm.on('update-status', function(window, pane)
 end)
 
 --- 🎯 TAB BAR ---
-
 local function truncate_title(title, max_leng)
   if #title > max_leng then
     return string.sub(title, 1, max_leng - 2) .. '..'

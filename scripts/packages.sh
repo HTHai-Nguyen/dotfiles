@@ -18,8 +18,10 @@ PACKAGES=(
   ### Coding packages ###
   #######################
   neovim
-  zsh
+  # helix
+  # zsh
   # fish
+  # nu
   # nodejs
   # npm
   # lazygit
@@ -41,10 +43,12 @@ PACKAGES=(
   fastfetch
   # fd        # for rolling release
   fd-find
-  # neofetch  # if pkgman doesn't have fastfetch
-  # eza
+  # neofetch  # if doesn't have fastfetch
+  # eza       # better ls
   # yazi      # preview image not work for alacritty
   # ranger    # for debian/ubuntu
+  # glow      # preview markdown
+  # marksman  # support markdown
 
   ## For Wayland ##
   # fuzzel
