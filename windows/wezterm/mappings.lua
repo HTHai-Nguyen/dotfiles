@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-local M = wezterm.config_builder()
+local M = {}
 
 --- Leader key: CTRL+a 
 M.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
