@@ -7,6 +7,7 @@ PACKAGES=(
   git
   stow
   curl
+  wget
   btop
   # htop
   gnupg
@@ -18,10 +19,10 @@ PACKAGES=(
   ### Coding packages ###
   #######################
   neovim
-  # helix
   # zsh
-  # fish
   # nu
+  # fish
+  # fish-shell    # for Void Linux
   # nodejs
   # npm
   # lazygit
@@ -75,8 +76,8 @@ PACKAGES=(
   # niri
   # sway
   # i3
-  bspwm
-  sxhkd # keybinding for bspwm
+  # bspwm
+  # sxhkd # keybinding for bspwm
   # awesome
   # qtile
   # xmonad

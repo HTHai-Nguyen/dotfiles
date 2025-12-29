@@ -100,11 +100,6 @@ set $fcitx_env \
     titlebar_border_thickness 0
     for_window [title="^.*"] title_format ""
     hide_edge_borders smart
-    # # Firefox
-    # for_window [class="firefox" title="^$"] border none
-    # for_window [app_id="firefox"] titlebar false
-    # # Brave
-    # for_window [app_id="brave-browser"] titlebar false
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -183,6 +178,7 @@ set $fcitx_env \
 assign [app_id="$term"] 1
 assign [app_id="brave-browser"] 2
 assign [app_id="firefox"] 3
+assign [app_id="floorp"] 3
 assign [app_id="dolphin"] 4
 
 #
