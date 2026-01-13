@@ -16,6 +16,7 @@ if status is-interactive
     source ~/.config/fish/aliases.fish
     alias bat='batcat'
     alias vi='nvim'
+    alias mi='micro'
     alias cls='clear'
-    alias fishreload='source ~/.config/fish/aliases.fish'
+    alias fishreload='source ~/.config/fish/config.fish'
 end
