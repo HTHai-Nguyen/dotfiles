@@ -27,4 +27,4 @@ alias lzg = lazygit
 alias vi = nvim
 alias nureload = exec nu
 alias wezconf = nvim ~/.config/wezterm/wezterm.lua
-
+alias dl = aria2c -x 16 -s 16

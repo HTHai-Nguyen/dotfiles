@@ -64,7 +64,7 @@ window_effects:
     # Remove the title bar from the window's frame. Note that this can
     # cause rendering issues for some applications.
     hide_title_bar:
-      enabled: true
+      enabled: false
 
     # Change the corner style of the window's frame.
     # ** Exclusive to Windows 11 due to API limitations.
@@ -144,6 +144,7 @@ window_rules:
   - commands: ['set-floating']
     match:
       - window_process: { equals: 'QuickLook'}
+      - window_process: { equals: 'explorer'}
   - commands: ['move --workspace 5']
     match: 
       - window_title: { regex: '.*Anki.*'}
@@ -161,6 +162,10 @@ window_rules:
     match:
       - window_process: { equals: 'Telegram'}
       - window_process: { equals: 'Zalo'}
+  - commands: ['move --workspace g', 'focus --workspace g']
+    match:
+      - window_process: { equals: 'Steam' }
+      - window_process: { equals: 'Epicgames' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
@@ -193,17 +198,19 @@ workspaces:
     display_name: "Code"
   - name: '9'
     display_name: "Chat"
+  - name: 'g'
+    display_name: "Game"
 
 keybindings:
   # Shift focus in a given direction.
   - commands: ['focus --direction left']
-    bindings: ['alt+h', 'alt+left']
+    bindings: ['alt+h']
   - commands: ['focus --direction right']
-    bindings: ['alt+l', 'alt+right']
+    bindings: ['alt+l']
   - commands: ['focus --direction up']
-    bindings: ['alt+k', 'alt+up']
+    bindings: ['alt+k']
   - commands: ['focus --direction down']
-    bindings: ['alt+j', 'alt+down']
+    bindings: ['alt+j']
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
@@ -314,6 +321,8 @@ keybindings:
     bindings: ['alt+t']
   - commands: ['focus --workspace c']
     bindings: ['alt+c']
+  - commands: ['focus --workspace g']
+    bindings: ['alt+g']
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
@@ -347,3 +356,5 @@ keybindings:
     bindings: ['alt+shift+t']
   - commands: ['move --workspace c', 'focus --workspace c']
     bindings: ['alt+shift+c']
+  - commands: ['move --workspace g', 'focus --workspace g']
+    bindings: ['alt+shift+g']

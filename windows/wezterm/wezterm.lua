@@ -76,7 +76,7 @@ local colors = {
 
 wezterm.on('update-status', function(window, pane)
   local workspace = window:active_workspace()
-  local date = wezterm.strftime('%b-%d-%Y')
+  local date = wezterm.strftime('%b-%d')
   local time = wezterm.strftime('%H:%M')
   local hostname = wezterm.hostname()
   local resize = window:active_key_table()
