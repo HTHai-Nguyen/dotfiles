@@ -27,8 +27,24 @@ fi
 
 echo "============================================"
 echo "Set zsh as default shell "
+<<<<<<< HEAD
+=======
+echo "Press Ctrl+c to cancel"
+>>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
 echo "============================================"
 if command -v zsh >/dev/null 2>&1; then
   chsh -s "$(which zsh)"
   echo "✅ zsh set as default shell"
 fi
+<<<<<<< HEAD
+=======
+
+echo "============================================"
+echo "Set fish as default shell "
+echo "Press Ctrl+c to cancel"
+echo "============================================"
+if command -v fish >/dev/null 2>&1; then
+  chsh -s "$(which fish)"
+  echo "✅ fish set as default shell"
+fi
+>>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c

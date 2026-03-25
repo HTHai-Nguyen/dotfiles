@@ -1,5 +1,13 @@
 {
+<<<<<<< HEAD
   "last_update": "2026-03-03T12:01:41.5966823+07:00",
+=======
+<<<<<<< HEAD
+  "last_update": "2025-11-26T19:34:27.5439414+07:00",
+=======
+  "last_update": "2025-12-24T17:18:51.8453100+07:00",
+>>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
+>>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
   "root_path": "D:\\Application\\Scoop",
   "scoop_branch": "master",
   "scoop_repo": "https://github.com/ScoopInstaller/Scoop"
