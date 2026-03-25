@@ -1,24 +1,10 @@
 general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  # Example: The below command launches Zebar.
-=======
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
   # startup_commands: ['shell-exec zebar']
   startup_commands: []
 
   # Commands to run just before the WM is shutdown.
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  # Example: The below command kills Zebar.
-=======
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
   # shutdown_commands: ['shell-exec taskkill /IM zebar.exe /F']
   shutdown_commands: []
   # Commands to run after the WM config is reloaded.
@@ -72,15 +58,7 @@ window_effects:
     # Highlight the window with a colored border.
     # ** Exclusive to Windows 11 due to API limitations.
     border:
-<<<<<<< HEAD
-      enabled: true
-=======
-<<<<<<< HEAD
       enabled: false
-=======
-      enabled: true
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
       color: '#6AECF0'
 
     # Remove the title bar from the window's frame. Note that this can
@@ -91,15 +69,7 @@ window_effects:
     # Change the corner style of the window's frame.
     # ** Exclusive to Windows 11 due to API limitations.
     corner_style:
-<<<<<<< HEAD
       enabled: false
-=======
-<<<<<<< HEAD
-      enabled: true
-=======
-      enabled: false
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
       # Allowed values: 'square', 'rounded', 'small_rounded'.
       style: 'square'
 
@@ -118,15 +88,7 @@ window_effects:
     hide_title_bar:
       enabled: true
     corner_style:
-<<<<<<< HEAD
       enabled: false
-=======
-<<<<<<< HEAD
-      enabled: true
-=======
-      enabled: false
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
       style: 'square'
     transparency:
       enabled: true
@@ -194,26 +156,12 @@ window_rules:
       - window_process: { equals: 'Code'}
   - commands: ['move --workspace t', 'focus --workspace t']
     match:
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      - window_process: { equals: 'alacritty'}
-=======
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
       - window_process: { equals: 'wezterm-gui'}
       - window_process: { equals: 'WindowsTerminal'}
   - commands: ['move --workspace 9', 'focus --workspace 9']
     match:
       - window_process: { equals: 'Telegram'}
       - window_process: { equals: 'Zalo'}
-<<<<<<< HEAD
-  - commands: ['move --workspace g', 'focus --workspace g']
-    match:
-      - window_process: { equals: 'Steam' }
-      - window_process: { equals: 'Epicgames' }
-=======
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
@@ -241,27 +189,11 @@ workspaces:
   - name: 'n'
     display_name: "Notes"
   - name: 't'
-<<<<<<< HEAD
     display_name: "Term"
   - name: 'c'
     display_name: "Code"
   - name: '9'
     display_name: "Chat"
-  - name: 'g'
-    display_name: "Game"
-=======
-<<<<<<< HEAD
-    display_name: "Terminal"
-  - name: 'c'
-    display_name: "Code"
-=======
-    display_name: "Term"
-  - name: 'c'
-    display_name: "Code"
-  - name: '9'
-    display_name: "Chat"
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
 
 keybindings:
   # Shift focus in a given direction.
@@ -349,18 +281,8 @@ keybindings:
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-<<<<<<< HEAD
   - commands: ['shell-exec --hide-window wezterm']
     bindings: ['alt+enter']
-=======
-<<<<<<< HEAD
-  - commands: ['shell-exec alacritty']
-    bindings: ['ctrl+alt+t']
-=======
-  - commands: ['shell-exec --hide-window wezterm']
-    bindings: ['alt+enter']
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
@@ -385,16 +307,8 @@ keybindings:
     bindings: ['alt+5']
   - commands: ['focus --workspace 6']
     bindings: ['alt+6']
-<<<<<<< HEAD
   - commands: ['focus --workspace 9']
     bindings: ['alt+9']
-=======
-<<<<<<< HEAD
-=======
-  - commands: ['focus --workspace 9']
-    bindings: ['alt+9']
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
   - commands: ['focus --workspace n']
     bindings: ['alt+n']
   - commands: ['focus --workspace t']
@@ -428,16 +342,8 @@ keybindings:
     bindings: ['alt+shift+5']
   - commands: ['move --workspace 6', 'focus --workspace 6']
     bindings: ['alt+shift+6']
-<<<<<<< HEAD
   - commands: ['move --workspace 9', 'focus --workspace 9']
     bindings: ['alt+shift+9']
-=======
-<<<<<<< HEAD
-=======
-  - commands: ['move --workspace 9', 'focus --workspace 9']
-    bindings: ['alt+shift+9']
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
   - commands: ['move --workspace n', 'focus --workspace n']
     bindings: ['alt+shift+n']
   - commands: ['move --workspace t', 'focus --workspace t']

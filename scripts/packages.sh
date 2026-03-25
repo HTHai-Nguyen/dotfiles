@@ -7,10 +7,7 @@ PACKAGES=(
   git
   stow
   curl
-<<<<<<< HEAD
-=======
   wget
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
   btop
   # htop
   gnupg
@@ -22,22 +19,11 @@ PACKAGES=(
   ### Coding packages ###
   #######################
   neovim
-<<<<<<< HEAD
   # helix
-  # zsh
-  # fish
-  # nu
-=======
-<<<<<<< HEAD
-  zsh
-  # fish
-=======
   # zsh
   # nu
   # fish
   # fish-shell    # for Void Linux
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
   # nodejs
   # npm
   # lazygit
@@ -59,28 +45,16 @@ PACKAGES=(
   fastfetch
   # fd        # for rolling release
   fd-find
-<<<<<<< HEAD
   # neofetch  # if doesn't have fastfetch
   # eza       # better ls
   # yazi      # preview image not work for alacritty
   # ranger    # for debian/ubuntu
   # glow      # preview markdown
   # marksman  # support markdown
-=======
-<<<<<<< HEAD
   # neofetch  # if pkgman doesn't have fastfetch
   # eza
   # yazi      # preview image not work for alacritty
   # ranger    # for debian/ubuntu
-=======
-  # neofetch  # if doesn't have fastfetch
-  # eza       # better ls
-  # yazi      # preview image not work for alacritty
-  # ranger    # for debian/ubuntu
-  # glow      # preview markdown
-  # marksman  # support markdown
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
->>>>>>> 9ad2acfa550e3a44bf467d30207365c1b145f55f
 
   ## For Wayland ##
   # fuzzel
@@ -107,13 +81,8 @@ PACKAGES=(
   # niri
   # sway
   # i3
-<<<<<<< HEAD
-  bspwm
-  sxhkd # keybinding for bspwm
-=======
   # bspwm
   # sxhkd # keybinding for bspwm
->>>>>>> 8847c20e1a964150ff879daec0307d59d0e9af3c
   # awesome
   # qtile
   # xmonad
