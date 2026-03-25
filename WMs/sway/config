@@ -10,7 +10,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term wezterm
+set $term ghostty
+set $term2 wezterm
 # Your preferred application launcher
 set $menu fuzzel
 
@@ -18,8 +19,8 @@ set $menu fuzzel
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output DP-1 mode 2560x1440@75Hz
-output eDP-1 bg ~/wallpapers/wallpaper07.png fill
-output DP-1 bg ~/wallpapers/wallpaper01.jpg fill
+output eDP-1 bg ~/Pictures/wallpapers/wallpaper07.png fill
+output DP-1 bg ~/Pictures/wallpapers/wallpaper01.jpg fill
 #
 # Example configuration:
 #
@@ -65,6 +66,7 @@ set $fcitx_env \
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $term2
 
     # Kill focused window
     bindsym $mod+q kill

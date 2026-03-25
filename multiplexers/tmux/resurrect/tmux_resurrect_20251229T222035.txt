@@ -1,0 +1,8 @@
+pane	config	1	1	:*	1	henry@fedora:~/dotfiles	:/home/henry/dotfiles	1	zsh	:
+pane	config	1	1	:*	2	henry@fedora:~/dotfiles	:/home/henry/dotfiles	0	zsh	:
+pane	home	1	1	:*	1	henry@fedora:~	:/home/henry	1	zsh	:
+pane	server	1	1	:*	1	henry@fedora:~	:/home/henry	1	zsh	:
+window	config	1	:zsh	1	:*	5d02,253x59,0,0{147x59,0,0,1,105x59,148,0,2}	:
+window	home	1	:zsh	1	:*	d360,253x59,0,0,3	:
+window	server	1	:zsh	1	:*	d362,253x59,0,0,5	:
+state	config	home
