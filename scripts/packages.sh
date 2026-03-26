@@ -13,6 +13,9 @@ PACKAGES=(
   # pipewire-jack
   # pipewire-bluetooth
   # wireplumber
+  # alsa-utils
+  # alsa-pipewire
+  # alsa-lib
   # sof-firmware
   # libinput              # input for Waland & X11
   # intel-ucode           # Microcode
@@ -46,6 +49,8 @@ PACKAGES=(
   #######################
   ### System packages ###
   #######################
+  sudo
+  opendoas # better sudo
   git
   stow
   curl
@@ -64,6 +69,7 @@ PACKAGES=(
   #######################
   neovim
   # helix
+  # bash
   # zsh
   # nu            # Nushell
   # fish
@@ -90,6 +96,7 @@ PACKAGES=(
   # fd        # for rolling release
   fd-find
   # eza       # better ls
+  # trash-cli
   # glow      # preview markdown
   # marksman  # support markdown
   ##### For Wayland #####
@@ -118,6 +125,7 @@ PACKAGES=(
   # niri
   # sway
   # river
+  # mangowc
   # qtile
   ##### For X11 #####
   # i3
@@ -128,6 +136,7 @@ PACKAGES=(
   # leftwm
   # herbstluftwm
   # dwm
+  # sxwm
 
   ##################
   ### Status bar ###
@@ -135,6 +144,13 @@ PACKAGES=(
   # waybar
   # polybar
   # xmobar
+
+  #####################
+  ### Desktop shell ###
+  #####################
+  # caelestia-shell
+  # noctalia-shell
+  # dankmaterialshell
 
   ########################
   ### Vietnamese input ###
@@ -163,5 +179,4 @@ PACKAGES=(
   # pcmanfm-qt
   # spacefm
   # Dolphin
-  # nemo
 )

@@ -135,9 +135,9 @@ fi
 # -------------------------------
 # 🔗 Load Aliases files
 # -------------------------------
-ALIAS_FILE="$HOME/dotfiles/shells/.aliases"
-if [ -f $ALIAS_FILE ]; then
-	source $ALIAS_FILE
+ALIAS_FILE="$HOME/dotfiles/shells/zsh/.aliases"
+if [ -f "$ALIAS_FILE" ]; then
+	source "$ALIAS_FILE"
 fi
 
  # Startup zoxide
@@ -149,10 +149,14 @@ eval "$(zoxide init zsh)"
 # Aliases common
  alias vi="nvim"
  alias zshconf="vi ~/.zshrc"
- alias ohmyzsh="vi ~/.oh-my-zsh"
+ alias zshrl='source ~/.zshrc'
+ alias omzsh="vi ~/.oh-my-zsh"
  alias cls="clear"
  alias lzg='lazygit'
  alias download='aria2c -x 16 -s 16'
+ alias ..='cd ..'
+ alias pd='popd'
+ alias rm='trash'
 # eza 
  alias ll="eza -l --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions" 
  alias la="eza -la --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions"
@@ -161,17 +165,3 @@ eval "$(zoxide init zsh)"
 
 # export FZF_DEFAULT_OPTS="--height=10 --layout=reverse --border"
 export FZF_DEFAULT_OPTS="--height=40% --min-height=10 --layout=reverse --border"
-
-
- # Warning git
- # git() {
- #  if [[ $1 == "push" ]]; then
- #        echo -e "\033[1;41m REMEMBER TO GIT PULL BEFORE PUSHING! \033[0m"
- #        echo -e "\033[1;33mType the word \"pull\" and press Enter to confirm (or Ctrl+C to cancel):\033[0m"
- #        read -r confirm
- #        [[ "$confirm" == "pull" ]] || { 
- #            echo "You didn't type 'pull' → push aborted. Go pull first!" 
- #            return 1
- #        }
- #    fi
- #  }
