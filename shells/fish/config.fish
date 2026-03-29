@@ -1,3 +1,10 @@
+# Auto login X11
+if status is-login
+  if test -z "$DISPLAY" -a "XDG_VTNR"=1 
+    exec startx
+  end
+end
+
 if status is-interactive
     export PATH="$PATH:/opt/nvim/"
     set -u fish_greeting "All Hail Kaid Hoang"
@@ -26,11 +33,4 @@ if status is-interactive
     alias ..='cd ..'
     alias pd='popd'
     alias download='aria2c -x 16 -s 16'
-    #eza
-    alias ll='eza -l --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions'
-    alias la='eza -la --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions'
-    alias ls='eza -G --icons=always --color=auto --group-directories-last'
-    alias lt='eza -T -a --icons=always --group-directories-last --no-permissions --hyperlink'
-
-    set -Ux FZF_DEFAULT_OPTS "--height=40% --min-height=10 --layout=reverse --border"
 end

@@ -96,7 +96,8 @@ PACKAGES=(
   # fd        # for rolling release
   fd-find
   # eza       # better ls
-  # trash-cli
+  trash-cli
+  xtools
   # glow      # preview markdown
   # marksman  # support markdown
   ##### For Wayland #####

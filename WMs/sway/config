@@ -18,19 +18,11 @@ set $menu fuzzel
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output HDMI-A-1 resolution 1920x1080 position 1920,0
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 output DP-1 mode 2560x1440@75Hz
 output eDP-1 bg ~/Pictures/wallpapers/wallpaper07.png fill
 output DP-1 bg ~/Pictures/wallpapers/wallpaper01.jpg fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 #
 ### Input configuration
@@ -46,21 +38,11 @@ input "1267:35:Elan_Touchpad" {
     middle_emulation enabled  # click 2 finger = middle-click
     click_method button_areas # use 2 physical click-region ThinkPad
 }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
 
 ### Set environment
-set $fcitx_env \
-    GTK_IM_MODULE=fcitx \
-    QT_IM_MODULE=fcitx \
-    XMODIFIERS=@im=fcitx \
-    SDL_IM_MODULE=fcitx \
-    GLFW_IM_MODULE=ibus
-
+set $fcitx_env GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx SDL_IM_MODULE=fcitx GLFW_IM_MODULE=ibus
 
 ### Key bindings
-# Screenshot
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 #
 # Basics:
 #
@@ -83,21 +65,16 @@ set $fcitx_env \
     exec_always export $fcitx_env &
     exec_always --no-startup-id fcitx5 &
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-    focus_follows_mouse no
-    for_window [floating] border normal
-
     # Reload the configuration file
     bindsym $mod+Shift+r reload
 
     # Hide title window
     default_border none
     default_floating_border none
+    floating_modifier $mod normal
+    focus_follows_mouse no
+    for_window [floating] border normal
+
     titlebar_padding 1
     titlebar_border_thickness 0
     for_window [title="^.*"] title_format ""
@@ -116,22 +93,12 @@ set $fcitx_env \
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 
 #
 # Workspaces:
@@ -192,15 +159,15 @@ assign [app_id="dolphin"] 4
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    # bindsym $mod+s layout stacking
-    bindsym $mod+t layout tabbed
-    bindsym $mod+y layout toggle split
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+t layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+space floating toggle, resize set width 1280 px height 800 px
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+tab focus mode_toggle
@@ -211,14 +178,10 @@ assign [app_id="dolphin"] 4
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+0 move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+0 scratchpad show
 
 #
@@ -229,12 +192,6 @@ assign [app_id="dolphin"] 4
 #     bindsym $down resize grow height 5px
 #     bindsym $up resize shrink height 5px
 #     bindsym $right resize grow width 5px
-#
-#     # Ditto, with arrow keys
-#     bindsym Left resize shrink width 5px
-#     bindsym Down resize grow height 5px
-#     bindsym Up resize shrink height 5px
-#     bindsym Right resize grow width 5px
 #
 #     # Return to default mode
 #     bindsym Return mode "default"
@@ -258,6 +215,7 @@ bindsym $mod+Ctrl+l resize grow width 5px
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
     bindsym Print exec grim
 
 #

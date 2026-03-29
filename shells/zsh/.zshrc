@@ -43,20 +43,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# zstyle ':omz:update' frequency 13   # auto update
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
+# DISABLE_MAGIC_FUNCTIONS="true"      #pasting URLs and other text is messed up.
+# DISABLE_AUTO_TITLE="true"           # Title terminal
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -68,7 +58,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -84,7 +74,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
@@ -111,8 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -131,6 +119,10 @@ fi
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
+
+# Adjustment size for fzf window
+# export FZF_DEFAULT_OPTS="--height=10 --layout=reverse --border"
+export FZF_DEFAULT_OPTS="--height=40% --min-height=10 --layout=reverse --border"
 
 # -------------------------------
 # 🔗 Load Aliases files
@@ -163,5 +155,3 @@ eval "$(zoxide init zsh)"
  alias ls="eza -G --icons=always --color=auto --group-directories-last"
  alias lt="eza -T -a --icons=always --group-directories-last --no-permissions --hyperlink"
 
-# export FZF_DEFAULT_OPTS="--height=10 --layout=reverse --border"
-export FZF_DEFAULT_OPTS="--height=40% --min-height=10 --layout=reverse --border"

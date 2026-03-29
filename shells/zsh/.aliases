@@ -61,6 +61,10 @@ fi
         alias cleanup="$priv xbps-remove -o && $priv xbps-remove -oO"
         # alias search="xbps-query -Rs"
         search() { xbps-query -s "$@" | awk '{print $1}' }
+        fzsearch() { 
+          pkg="$(xpkg -a | fzf  --multi --query="$*" --preview="xbps-query -RS {} | bat -l yaml  --color=always -p")"
+          [ -n "$pkg" ] && $priv xbps-install -Sy $pkg
+        }
 
     # nix (NixOS, or other systems with Nix installed)
     elif command -v nix-env >/dev/null 2>&1; then
@@ -76,3 +80,4 @@ fi
     else
         echo "Distro not supported for these aliases!"
     fi
+
