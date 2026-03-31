@@ -25,20 +25,31 @@ else
   echo "Neither fastfetch nor neofetch is installed."
 fi
 
-echo "============================================"
-echo "Set zsh as default shell "
-echo "Press Ctrl+c to cancel"
-echo "============================================"
-if command -v zsh >/dev/null 2>&1; then
-  chsh -s "$(which zsh)"
-  echo "✅ zsh set as default shell"
-fi
+# echo "============================================"
+# echo "Set zsh as default shell "
+# echo "Press Ctrl+c to cancel"
+# echo "============================================"
+# if command -v zsh >/dev/null 2>&1; then
+#   chsh -s "$(which zsh)"
+#   echo "✅ zsh set as default shell"
+# fi
+#
+# echo "============================================"
+# echo "Set fish as default shell "
+# echo "Press Ctrl+c to cancel"
+# echo "============================================"
+# if command -v fish >/dev/null 2>&1; then
+#   chsh -s "$(which fish)"
+#   echo "✅ fish set as default shell"
+# fi
+echo "Choose default shell:"
+echo "1) zsh"
+echo "2) fish"
+read -rp "Enter choice [1-2]: " choice
 
-echo "============================================"
-echo "Set fish as default shell "
-echo "Press Ctrl+c to cancel"
-echo "============================================"
-if command -v fish >/dev/null 2>&1; then
-  chsh -s "$(which fish)"
-  echo "✅ fish set as default shell"
-fi
+case "$choice" in
+  1) target_shell="$(which zsh)" ;;
+  2) target_shell="$(which fish)" ;;
+  *) echo "Invalid choice"; exit 1 ;;
+esac
+echo "Set $target_shell as default"

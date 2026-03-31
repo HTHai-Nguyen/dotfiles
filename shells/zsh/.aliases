@@ -11,15 +11,17 @@ fi
 
     # pacman (Arch, EndeavourOS, CachyOS )
     if command -v pacman >/dev/null 2>&1; then
-        alias update="$priv pacman -Syu --no-confirm"
-        alias upgrade="$priv pacman -Syu --no-confirm"
-        alias install="$priv pacman -S --no-confirm"
-        alias remove="$priv pacman -R --no-confirm"
-        alias uninstall="$priv pacman -R --no-confirm"
+        alias update="$priv pacman -Syu"
+        alias upgrade="$priv pacman -Syu"
+        alias install="$priv pacman -S --needed --noconfirm"
+        alias remove="$priv pacman -R --noconfirm"
+        alias uninstall="$priv pacman -Rsu --noconfirm"
+        alias list="pacman -Qq"
+        alias installed="pacman -Qs "$@""
         # alias search="pacman -Ss"
         search() { pacman -Ss "$@" | awk '{print $1}' }
 
-    # apt (Ubuntu, Debian, Linux Mint)
+    # apt (Ubuntu, Debian, Linux Mint
     elif command -v apt >/dev/null 2>&1; then
         alias update="$priv apt update -y"
         alias upgrade="$priv apt upgrade -y"
@@ -30,7 +32,7 @@ fi
         # alias search="apt search"
         search() { apt search "$@" | awk '{print $1}' }
 
-    # dnf (Fedora, RHEL, Bazzite)
+    # dnf (Fedora, RHEL)
     elif command -v dnf >/dev/null 2>&1; then
         alias update="$priv dnf update -y"
         alias upgrade="$priv dnf upgrade -y"
@@ -38,6 +40,7 @@ fi
         alias remove="$priv dnf remove -y"
         alias uninstall="$priv dnf remove -y"
         alias list="dnf list"
+        alias installed="dnf list installed"
         # alias search="dnf search"
         search() { dnf search "$@" | awk '{print $1}' }
 

@@ -9,14 +9,29 @@ echo "=================================="
 echo "PACMAN (Arch-based) detected"
 echo "=================================="
 
-## Call to install.sh
-install_package() {
-  sudo pacman -S --noconfirm "$1"
-  return $?
-}
+# Option: sudo or doas
+if command -v doas >/dev/null 2>&1; then
+    priv="doas"
+elif command -v sudo >/dev/null 2>&1; then
+    priv="sudo"
+else
+    priv=""
+fi
 
 ## Function find all packages isntalled
 pkg_installed() {
   local pkg="$1"
   pacman -Qi "$pkg" >/dev/null 2>&1
 }
+
+## Call to install.sh
+install_package() {
+  local pkg="$1"
+  if pkg_installed "$pkg"; then
+    echo "$pkg already installed!!"
+    return 0
+  fi 
+  $priv pacman -S --needed --noconfirm "$pkg"
+  return $?
+}
+

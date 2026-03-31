@@ -1,2 +1,5 @@
 multiplexers/tmux/resurrect/*
 shells/fish/fish_variables
+windows/nushell/history.txt
+windows/yasb/yasb.log
+windows/yazi/state

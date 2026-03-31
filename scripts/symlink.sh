@@ -5,7 +5,17 @@
 set -euo pipefail
 
 # Path setup
-rm -rf $HOME/.zshrc
+# rm -rf $HOME/.zshrc
+ZSHRC="$HOME/.zshrc"
+
+if [ -e "$ZSHRC" ] || [ -L "$ZSHRC" ]; then
+  if [ ! -L "$ZSHRC" ]; then
+    echo "⚠️  Removing existing .zshrc (not a symlink)"
+    rm "$ZSHRC"
+  else
+    echo "✔ .zshrc already a symlink, skipping remove"
+  fi
+fi
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 HOME_DIR="$HOME"
@@ -14,11 +24,6 @@ MODULES_DIR="$DOTFILES_DIR/scripts/modules"
 # package installed check
 is_installed() {
   command -v "$1" >/dev/null 2>&1
-  # local pkg="$1"
-  # if pkg_installed "$pkg"; then
-  #   return 0
-  # fi
-  # return 1
 }
 
 # Function to stow a folder to target

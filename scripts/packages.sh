@@ -97,7 +97,7 @@ PACKAGES=(
   fd-find
   # eza       # better ls
   trash-cli
-  xtools
+  # xtools
   # glow      # preview markdown
   # marksman  # support markdown
   ##### For Wayland #####
