@@ -78,8 +78,8 @@ set $fcitx_env GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx SDL_I
     titlebar_padding 1
     titlebar_border_thickness 0
     for_window [title="^.*"] title_format ""
-    hide_edge_borders smart
-
+    for_window [title="^Picture-in-Picture$"] floating enable, sticky enable, border none
+    for_window [title="^Picture in picture$"] floating enable, sticky enable, border none
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     # Shutdown
@@ -153,8 +153,7 @@ assign [app_id="dolphin"] 4
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    #  horizontal and vertical splits
+    # You can "split" the current object of your focus with horizontal and vertical splits
     bindsym $mod+g splith
     bindsym $mod+v splitv
 
@@ -223,6 +222,7 @@ bindsym $mod+Ctrl+l resize grow width 5px
 #
 default_border pixel 3
 default_floating_border normal
+hide_edge_borders smart
 for_window [class=".*"] corner rounding 50
 client.focused          #03ffff #03ffff #000000 #03ffff #03ffff
 client.unfocused        #00000000 #00000000 #cdd6f4 #00000000 #00000000
