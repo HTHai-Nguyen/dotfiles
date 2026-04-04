@@ -16,6 +16,7 @@ PACKAGES=(
   # alsa-utils
   # alsa-pipewire
   # alsa-lib
+  # pamixer
   # sof-firmware
   # libinput              # input for Waland & X11
   # intel-ucode           # Microcode
