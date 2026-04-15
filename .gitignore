@@ -3,3 +3,6 @@ shells/fish/fish_variables
 windows/nushell/history.txt
 windows/yasb/yasb.log
 windows/yazi/state
+shells/fish/conf.d/fish_frozen_key_bindings.fish
+shells/fish/conf.d/fish_frozen_theme.fish
+shells/fish/fish_variables

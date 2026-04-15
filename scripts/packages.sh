@@ -7,21 +7,26 @@ PACKAGES=(
   # networkmanager
   # bluez     # bluetooth
   # blueman   # ble with GUI
-  # pipewire  # audio driver
+  pipewire  # audio driver
   # pipewire-pulse
   # pipewire-alsa
   # pipewire-jack
   # pipewire-bluetooth
-  # wireplumber
-  # alsa-utils
-  # alsa-pipewire
-  # alsa-lib
+  wireplumber
+  alsa-utils
+  alsa-pipewire
+  alsa-lib
   # sof-firmware
-  # libinput              # input for Waland & X11
+  libinput              # input for Waland & X11
   # intel-ucode           # Microcode
-  # mesa                  # Graphic driver
+  mesa                  # Graphic driver
+  mesa-dri
+  mesa-intel-dri
+  mesa-vaapi
   # vulkan-intel
-  # intel-media-driver
+  intel-media-driver
+  libva-intel-driver
+  libva-utils
   ##### For Wayland #####
   # wayland
   # wayland-utils
@@ -34,30 +39,32 @@ PACKAGES=(
   # qt6-wayland
   ##### For X11 #####
   # xorg
-  # xorg-minimal
+  xorg-minimal
   # xorg-server
   # xorg-xinit
-  # xinit         # depend on distro
+  xinit         # depend on distro
   # xorg-xprop
   # xorg-xset
-  # xf86-input-libinput
-  # xf86-video-intel
-  # xrandr
+  xf86-input-libinput
+  xf86-video-intel
+  xrandr
   # xclip
-  # xsel          # lightweight than xclip
+  xsel          # lightweight than xclip
+  libX11
+  libXft
 
   #######################
   ### System packages ###
   #######################
-  sudo
-  opendoas # better sudo
-  git
+  # sudo
+  # opendoas # better sudo
+  # git
   stow
   curl
   wget
   7zip
-  btop
-  # htop
+  # btop
+  htop
   gnupg
   # arch-keyring    # for Arch
   # ca-certificates # for Debian/Ubuntu
@@ -73,7 +80,7 @@ PACKAGES=(
   # zsh
   # nu            # Nushell
   # fish
-  # fish-shell    # for Void Linux
+  fish-shell    # for Void Linux
   # nodejs
   # npm
   # lazygit
@@ -85,7 +92,7 @@ PACKAGES=(
   #############
   ### Tools ###
   #############
-  tmux
+  # tmux
   fzf
   ripgrep
   bat    # better cat
@@ -93,27 +100,27 @@ PACKAGES=(
   aria2  # better for download
   fastfetch
   # neofetch  # if doesn't have fastfetch
-  # fd        # for rolling release
-  fd-find
-  # eza       # better ls
+  fd        # for rolling release
+  # fd-find
+  eza       # better ls
   trash-cli
-  # xtools
+  xtools	# for Void-linux
   # glow      # preview markdown
   # marksman  # support markdown
   ##### For Wayland #####
   # fuzzel
   # rofi-wayland
   ##### For X11 #####
-  # picom      # compositor
-  # nitrogen   # wallpaper manager
+  picom      # compositor
+  nitrogen   # wallpaper manager
   # feh        # wallpaper manager
-  # rofi       # appications launcher
-  # flameshot  # screenshot
+  rofi       # appications launcher
+  flameshot  # screenshot
 
   #########################
   ### Terminal Emulator ###
   #########################
-  # alacritty
+  alacritty
   # kitty
   # ghostty
   # wezterm
@@ -130,8 +137,8 @@ PACKAGES=(
   # qtile
   ##### For X11 #####
   # i3
-  # bspwm
-  # sxhkd # keybinding for bspwm
+  bspwm
+  sxhkd # keybinding for bspwm
   # awesome
   # xmonad
   # leftwm
@@ -143,7 +150,7 @@ PACKAGES=(
   ### Status bar ###
   ##################
   # waybar
-  # polybar
+  polybar
   # xmobar
 
   #####################
@@ -174,9 +181,10 @@ PACKAGES=(
   ##### TUI ######
   # yazi      # preview image not work for alacritty
   # ranger    # should for Debian/Ubuntu
+  lf
   ##### GUI ######
   # Thunar
-  # pcmanfm
+  pcmanfm
   # pcmanfm-qt
   # spacefm
   # Dolphin

@@ -21,7 +21,7 @@ fi
 ## Function find all packags installed
 pkg_installed() {
   local pkg="$1"
-  xbps-query -Rs "^${pkg}$" >/dev/null 2>&1
+  xbps-query -l "^${pkg}$" >/dev/null 2>&1
 }
 
 ## Call to install.sh
@@ -31,6 +31,6 @@ install_package() {
     echo "$pkg already installed!!"
     return 0
   fi 
-  sudo xbps-install -y "$pkg"
+  $priv xbps-install -Sy "$pkg"
   return $?
 }

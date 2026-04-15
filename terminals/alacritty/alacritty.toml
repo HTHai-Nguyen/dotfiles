@@ -1,3 +1,5 @@
+# New version
+
 [general]
 import = ["~/.config/alacritty/alacritthemes/efocado_dark.toml"]
 live_config_reload = true
@@ -6,12 +8,12 @@ live_config_reload = true
 padding = { x = 5, y = 10}
 decorations = "Full"
 opacity = 0.69
-startup_mode = "Fullscreen"
+startup_mode = "Windowed"
 resize_increments = true
 
 [font]
-normal = { family = "AnonymiceProNerdFontMono", style = "Regular" }
-size = 9
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 10
 
 [colors]
 transparent_background_colors = true

@@ -5,15 +5,12 @@
 # | |_| || |  	http://www.gitlab.com/dwt1/ 
 # |____/ |_|  	
 #        
-# A customized sxhkdrc for the bspwm window manager.
-# https://github.com/baskerville/sxhkd
-# https://github.com/baskerville/bspwm
 
 ### WM INDEPENDENT KEYBINDINGS ###
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
 ### BSPWM HOTKEYS ###
 
@@ -31,19 +28,15 @@ super + shift + q
 
 # restart bspwm
 super + shift + r
-	bspc wm -r
+	bspc wm -r; notify-send 'bspwm' 'Reloaded config'
 
 # close and kill
 super + q
 	bspc node -c
 
-# terminal emulator
-super + slash
-	dtos-help
-
 # alternate between the tiled and monocle layout
-#super + space
-	#bspc desktop -l next
+super + /
+	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -55,7 +48,7 @@ super + m
 
 # file manager
 super + e
-    rox-filer
+    pcmanfm
 
 # STATE/FLAGS
 
@@ -139,44 +132,30 @@ ctrl + alt + l
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# launch qutebrowser
+# launch browser
 super + b
-    qutebrowser "https://distro.tube"
+    librewolf
 
 # dmscripts (SUPER + p followed by another key)
-super + p; h
-    dm-hub
-super + p; {a}
-    dm-sounds
-super + p; {b}
-    dm-setbg
-super + p; {c}
-    dtos-colorscheme
-super + p; {shift + c}
-    dm-colpick
-super + p; {e}
-    dm-confedit
-super + p; {i}
-    dm-maim
 super + p; {k}
     dm-kill
-super + p; {m}
-    dm-man
-super + p; {n}
-    dm-note
-super + p; {o}
-    dm-bookman
-super + p; p
-    passmenu -p Pass:
-super + p; {q}
-    dm-logout
-super + p; {r}
-    dm-radio
-super + p; {s}
-    dm-websearch
-super + p; {t}
-    dm-translate
 
-# move & resize
-super + ctrl + alt + @{Left,Down,Up,Right}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+# Volume
+XF86AudioRaiseVolume
+	pamixer -i 2
+XF86AudioLowerVolume
+	pamixer -d 2
+XF86AudioMute
+	pamixer -t
+
+# Scratchpad
+alt + 0
+	~/dotfiles/WMs/bspwm/scratchpad
+alt + e
+	~/dotfiles/WMs/bspwm/scratchpad lf lf
+alt + c	
+	~/dotfiles/WMs/bspwm/scratchpad qalc qalc
+
+# System
+super + ctrl + x
+	doas poweroff

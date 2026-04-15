@@ -38,7 +38,7 @@ else if type -q pacman
   function search; pacman -Ss $argv | awk '{print $1}'; end
 
 # xbps (Void Linux)
-else if type -q xbps
+else if type -q xbps-install
   alias install='$priv xbps-install -Sy'
   alias update='$priv xbps-install -Sy'
   alias upgrade='$priv xbps-install -Syu'
