@@ -5,6 +5,7 @@
   linux-dev (/dev/input/by-path/platform-i8042-serio-0-event-kbd)
   linux-use-trackpoint-property yes
   linux-output-device-name kanata_thinkpad
+  linux-dev-name-exclude ("Loctus-Uinput-Server")
   concurrent-tap-hold yes
   rapid-event-delay 5
   

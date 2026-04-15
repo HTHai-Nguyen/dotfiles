@@ -36,7 +36,7 @@
         // "format": "( {} )"
     },
     "clock": {
-        "format": "{:%a %b %d - %H:%M}",
+        "format": "{:%a %b-%d | %H:%M}",
         "tooltip": false
     },
     "cpu": {

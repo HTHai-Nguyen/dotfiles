@@ -11,11 +11,11 @@ echo "=================================="
 
 # Option: sudo or doas
 if command -v doas >/dev/null 2>&1; then
-    priv="doas"
+  priv="doas"
 elif command -v sudo >/dev/null 2>&1; then
-    priv="sudo"
+  priv="sudo"
 else
-    priv=""
+  priv=""
 fi
 
 ## Function find all packags installed
