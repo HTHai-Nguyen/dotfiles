@@ -53,3 +53,4 @@ case "$choice" in
   *) echo "Invalid choice"; exit 1 ;;
 esac
 echo "Set $target_shell as default"
+chsh -s "$target_shell"

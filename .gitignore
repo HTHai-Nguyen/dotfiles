@@ -6,3 +6,4 @@ windows/yazi/state
 shells/fish/conf.d/fish_frozen_key_bindings.fish
 shells/fish/conf.d/fish_frozen_theme.fish
 shells/fish/fish_variables
+WMs/qtile/__pycache__

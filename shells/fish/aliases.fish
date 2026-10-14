@@ -30,11 +30,11 @@ else if type -q dnf
   
 # pacman (Arch, EndeavourOS, CachyOS)
 else if type -q pacman
-  alias install='$priv pacman -S --no-confirm'
-  alias update='$priv pacman -Sy --no-confirm'
-  alias upgrade='$priv pacman -Syu --no-confirm'
-  alias remove='$priv pacman -R --no-confirm'
-  alias uninstall='$priv pacman -Sy --no-confirm'
+  alias install='$priv pacman -S --noconfirm'
+  alias update='$priv pacman -Sy --noconfirm'
+  alias upgrade='$priv pacman -Syu --noconfirm'
+  alias remove='$priv pacman -R --noconfirm'
+  alias uninstall='$priv pacman -Rs --noconfirm'
   function search; pacman -Ss $argv | awk '{print $1}'; end
 
 # xbps (Void Linux)

@@ -4,27 +4,26 @@ PACKAGES=(
   #######################
   ### Driver packages ###
   #######################
-  # networkmanager
+  networkmanager
   # bluez     # bluetooth
   # blueman   # ble with GUI
   pipewire  # audio driver
-  # pipewire-pulse
-  # pipewire-alsa
+  pipewire-pulse
+  pipewire-alsa
   # pipewire-jack
   # pipewire-bluetooth
-  # wireplumber
-  # alsa-utils
-  # alsa-pipewire
-  # alsa-lib
-  # pamixer
-  # sof-firmware
+  wireplumber
+  alsa-utils
+  # alsa-pipewire	# Void linux
+  alsa-lib
+  pamixer
+  sof-firmware
   libinput              # input for Waland & X11
-  # intel-ucode           # Microcode
   mesa                  # Graphic driver
-  mesa-dri
-  mesa-intel-dri
-  mesa-vaapi
-  # vulkan-intel
+  # mesa-dri		# Void linux
+  # mesa-intel-dri	# Void linux
+  # mesa-vaapi		# Void linux
+  vulkan-intel
   intel-media-driver
   libva-intel-driver
   libva-utils
@@ -39,38 +38,41 @@ PACKAGES=(
   # wl-clipboard
   # qt6-wayland
   ##### For X11 #####
-  # xorg
-  xorg-minimal
-  # xorg-server
-  # xorg-xinit
-  xinit         # depend on distro
-  # xorg-xprop
-  # xorg-xset
+  xorg-server
+  xorg-xinit
+  xorg-xrandr
+  xorg-xprop
+  xorg-xset
+  # xorg-minimal	# Void linux
+  # xinit         	# Void linux
+  # xrandr		# Void linux
   xf86-input-libinput
   xf86-video-intel
-  xrandr
   # xclip
   xsel          # lightweight than xclip
-  libX11
-  libXft
+  # libx11	
+  # libxft
+  # libX11	# Void linux
+  # libXft	# Void linux
+  polkit
 
   #######################
   ### System packages ###
   #######################
   # sudo
-  # opendoas # better sudo
-  # git
+  opendoas # better sudo
+  git
   stow
   curl
   wget
   7zip
-  # btop
-  htop
+  btop
+  # htop
   gnupg
-  # arch-keyring    # for Arch
+  # archlinux-keyring    # for Arch
   # ca-certificates # for Debian/Ubuntu
-  # tlp
-  # tlp-rdw
+  tlp
+  tlp-rdw
 
   #######################
   ### Coding packages ###
@@ -80,8 +82,8 @@ PACKAGES=(
   # bash
   # zsh
   # nu            # Nushell
-  # fish
-  fish-shell    # for Void Linux
+  fish
+  # fish-shell    # for Void Linux
   # nodejs
   # npm
   # lazygit
@@ -105,7 +107,8 @@ PACKAGES=(
   # fd-find
   eza       # better ls
   trash-cli
-  xtools	# for Void-linux
+  dunst
+  # xtools	# for Void-linux
   # glow      # preview markdown
   # marksman  # support markdown
   ##### For Wayland #####
@@ -113,16 +116,16 @@ PACKAGES=(
   # rofi-wayland
   ##### For X11 #####
   picom      # compositor
-  nitrogen   # wallpaper manager
-  # feh        # wallpaper manager
+  # nitrogen   # GUI wallpaper manager
+  feh        # CLI wallpaper manager
   rofi       # appications launcher
   flameshot  # screenshot
 
   #########################
   ### Terminal Emulator ###
   #########################
-  alacritty
-  # kitty
+  # alacritty
+  kitty
   # ghostty
   # wezterm
 
@@ -135,23 +138,23 @@ PACKAGES=(
   # sway
   # river
   # mangowc
-  # qtile
   ##### For X11 #####
+  ### Manual tiling
   # i3
-  bspwm
-  sxhkd # keybinding for bspwm
-  # awesome
-  # xmonad
-  # leftwm
+  # bspwm
+  # sxhkd 	# keybinding for bspwm
   # herbstluftwm
+  ### Dynamic tiling
+  # awesome
+  # qtile
+  # xmonad
   # dwm
-  # sxwm
 
   ##################
   ### Status bar ###
   ##################
   # waybar
-  polybar
+  # polybar
   # xmobar
 
   #####################
@@ -180,13 +183,13 @@ PACKAGES=(
   ### File Manager ###
   ####################
   ##### TUI ######
-  # yazi      # preview image not work for alacritty
-  # ranger    # should for Debian/Ubuntu
-  lf
+  yazi      # preview image not work for alacritty
+  # ranger    # for Debian/Ubuntu with kitty
+  # lf
   ##### GUI ######
-  # Thunar
+  # thunar
   pcmanfm
   # pcmanfm-qt
-  # spacefm
-  # Dolphin
+  gvfs
+  udisks2
 )

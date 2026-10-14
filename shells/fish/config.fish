@@ -1,13 +1,14 @@
 # Auto login X11
-if status is-login
-  if test -z "$DISPLAY" -a "XDG_VTNR"=1 
-    exec startx
-  end
-end
+# if status is-login
+#   if test -z "$DISPLAY" -a "XDG_VTNR"=1 
+#     exec startx
+#   end
+# end
 
 if status is-interactive
     export PATH="$PATH:/opt/nvim/"
     set -u fish_greeting "All Hail Kaid Hoang"
+    set -gx EDITOR nvim
 
     ## Start TMUX
     #    and not set -q TMUX
@@ -23,7 +24,6 @@ if status is-interactive
     source ~/.config/fish/aliases.fish
     
     ## Aliases common
-    alias bat='batcat'
     alias vi='nvim'
     alias mi='micro'
     alias cls='clear'
