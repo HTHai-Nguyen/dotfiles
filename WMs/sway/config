@@ -11,9 +11,11 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term ghostty
-set $term2 wezterm
+set $term2 kitty
 # Your preferred application launcher
 set $menu fuzzel
+set $menu2 vicinae vicinae://toggle
+set $clipboard vicinae vicinae://launch/clipboard/history
 
 ### Output configuration
 #
@@ -42,6 +44,29 @@ input "1267:35:Elan_Touchpad" {
 ### Set environment
 set $fcitx_env GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx SDL_IM_MODULE=fcitx GLFW_IM_MODULE=ibus
 
+# Autostart
+exec_always --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always --no-startup-id  nm-applet --indicator &
+exec_always export $fcitx_env &
+exec_always --no-startup-id fcitx5 &
+exec_always vicinae --daemon
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Hide title window
+default_border none
+default_floating_border none
+floating_modifier $mod normal
+focus_follows_mouse no
+for_window [floating] border normal
+
+titlebar_padding 1
+titlebar_border_thickness 0
+for_window [title="^.*"] title_format ""
+for_window [title="^Picture-in-Picture$"] floating enable, sticky enable, border none
+for_window [title="^Picture in picture$"] floating enable, sticky enable, border none
+
 ### Key bindings
 #
 # Basics:
@@ -54,32 +79,13 @@ set $fcitx_env GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx SDL_I
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+space exec $menu --width=50
+    bindsym $mod+space exec $menu
+    # bindsym $mod+space exec $menu2
+    bindsym $mod+v exec $clipboard
 
     # Open File Explorer (Dolphin)
     bindsym $mod+e exec dolphin
 
-    # Autostart
-    exec_always --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec_always --no-startup-id  nm-applet --indicator &
-    exec_always export $fcitx_env &
-    exec_always --no-startup-id fcitx5 &
-
-    # Reload the configuration file
-    bindsym $mod+Shift+r reload
-
-    # Hide title window
-    default_border none
-    default_floating_border none
-    floating_modifier $mod normal
-    focus_follows_mouse no
-    for_window [floating] border normal
-
-    titlebar_padding 1
-    titlebar_border_thickness 0
-    for_window [title="^.*"] title_format ""
-    for_window [title="^Picture-in-Picture$"] floating enable, sticky enable, border none
-    for_window [title="^Picture in picture$"] floating enable, sticky enable, border none
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     # Shutdown
@@ -154,8 +160,8 @@ assign [app_id="dolphin"] 4
 # Layout stuff:
 #
     # You can "split" the current object of your focus with horizontal and vertical splits
-    bindsym $mod+g splith
-    bindsym $mod+v splitv
+    # bindsym $mod+g splith
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -173,6 +179,12 @@ assign [app_id="dolphin"] 4
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # Swaytiles
+    bindsym $mod+Shift+t exec ~/.local/bin/swaytiles menu --launcher fuzzel
+    bindsym $mod+z exec ~/.local/bin/swaytiles show 
+    bindsym $mod+r exec ~/.local/bin/swaytiles 
+
 
 #
 # Scratchpad:

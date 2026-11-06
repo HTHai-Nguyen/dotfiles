@@ -12,4 +12,8 @@ config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "NONE"
 config.window_padding = { left = 5, right = 5, top = 5, bottom = 5 }
 
+--- Cursor ---
+config.default_cursor_style = "SteadyBlock"
+config.animation_fps = 60
+
 return config

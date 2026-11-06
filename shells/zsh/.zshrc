@@ -1,7 +1,7 @@
 # Startup Tmux with Terminal
-if command -v tmux &> /dev/null && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  tmux attach -t home || tmux new -s home
-fi
+# if command -v tmux &> /dev/null && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   tmux attach -t home || tmux new -s home
+# fi
 
 # Set environment $VISUAL is neovim
 export VISUAL="nvim"
@@ -140,9 +140,10 @@ eval "$(zoxide init zsh)"
 
 # Aliases common
  alias vi="nvim"
- alias zshconf="vi ~/.zshrc"
+ alias vd="neovide"
+ alias zshrc="nvim ~/.zshrc"
  alias zshrl='source ~/.zshrc'
- alias omzsh="vi ~/.oh-my-zsh"
+ alias omzsh="nvim ~/.oh-my-zsh"
  alias cls="clear"
  alias lzg='lazygit'
  alias download='aria2c -x 16 -s 16'
@@ -150,8 +151,12 @@ eval "$(zoxide init zsh)"
  alias pd='popd'
  alias rm='trash'
 # eza 
- alias ll="eza -l --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions" 
- alias la="eza -la --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions"
- alias ls="eza -G --icons=always --color=auto --group-directories-last"
+ # alias ll="eza -l --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions" 
+ alias ll="eza -l --icons=always --total-size --group-directories-last" 
+ alias la="eza -la --icons=always --total-size --group-directories-last --no-permissions"
+ alias ls="eza -G --icons=always --group-directories-last"
  alias lt="eza -T -a --icons=always --group-directories-last --no-permissions --hyperlink"
 
+
+# Created by `pipx` on 2026-10-19 12:55:00
+export PATH="$PATH:/home/henry/.local/bin"

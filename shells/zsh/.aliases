@@ -21,7 +21,7 @@ fi
         # alias search="pacman -Ss"
         search() { pacman -Ss "$@" | awk '{print $1}' }
 
-    # apt (Ubuntu, Debian, Linux Mint
+    # apt (Ubuntu, Debian, Linux Mint)
     elif command -v apt >/dev/null 2>&1; then
         alias update="$priv apt update -y"
         alias upgrade="$priv apt upgrade -y"
@@ -46,11 +46,12 @@ fi
 
     # zypper (OpenSUSE)
     elif command -v pacman >/dev/null 2>&1; then
-        alias update="$priv zypper refresh -y"
-        alias upgrade="$priv zypper update -y"
-        alias install="$priv zypper install -y"
-        alias remove="$priv zypper remove -y"
-        alias uninstall="$priv zypper remove -y"
+        alias refresh="$priv zypper refresh"
+        alias dup="$priv zypper dup"
+        alias install="$priv zypper --non-interactive install --auto-agree-with-licenses"
+        alias remove="$priv zypper --non-interactive remove"
+        alias removerepo="$priv zypper --non-interactive removerepo"
+        alias uninstall="$priv zypper --non-interactive remove"
         # alias search="zypper search"
         search() { zypper search "$@" | awk '{print $1}' }
 
