@@ -17,20 +17,25 @@ if status is-interactive
     #    else
     #            tmux new -s main
     #    end
-    ## Start zoxide
+
+    ## Autostart
     zoxide init fish | source
+    # starship init fish | source
 
     ## Load Aliases file
     source ~/.config/fish/aliases.fish
-    
+
     ## Aliases common
     alias vi='nvim'
     alias mi='micro'
     alias cls='clear'
     alias lzg='lazygit'
+    alias cm='chezmoi'
     alias fishconf='nvim ~/.config/fish/config.fish'
     alias fishrl='source ~/.config/fish/config.fish'
-    alias ..='cd ..'
-    alias pd='popd'
     alias download='aria2c -x 16 -s 16'
+    alias ll='eza -l --icons=always --total-size'
+    alias la='eza -la --icons=always --total-size'
+    alias ls='eza -G --icons=always'
+    alias lt='eza -T -a --icons=always --no-permissions --hyperlink'
 end

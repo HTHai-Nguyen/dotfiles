@@ -83,12 +83,12 @@ cd "$DOTFILES_DIR"
 # shells: stow all into $HOME
 echo "=====Stow shells====="
 if command -v fish >/dev/null 2>&1; then
-    echo "Start stow fish to $HOME/.config"
-    symlink "shells" "$CONFIG_DIR"
+  echo "Start stow fish to $HOME/.config"
+  symlink "shells" "$CONFIG_DIR"
 fi
 if command -v zsh >/dev/null 2>&1; then
-    echo "Start stow zsh to $HOME"
-    stow zsh -d ~/dotfiles/shells/ -t "$HOME_DIR"
+  echo "Start stow zsh to $HOME"
+  stow zsh -d ~/dotfiles/shells/ -t "$HOME_DIR"
 fi
 echo
 
@@ -104,6 +104,11 @@ else
 fi
 echo
 
+# launchers
+echo "=====Stow launchers======"
+auto_symlink "launchers" "$CONFIG_DIR"
+echo
+
 # multiplexers
 echo "=====Stow multiplexers====="
 auto_symlink "multiplexers" "$CONFIG_DIR"
@@ -113,8 +118,6 @@ echo
 echo "=====Stow neovim/?====="
 # symlink "neomvim/lazyvim" "$CONFIG_DIR"
 # symlink "neomvim/nvchad" "$CONFIG_DIR"
-# symlink "neomvim/ecovim" "$CONFIG_DIR"
-# symlink "neomvim/kickstart" "$CONFIG_DIR"
 echo
 
 # statusbars
@@ -134,7 +137,7 @@ echo
 
 # Window manager
 echo "=====Stow window manager====="
-auto_symlink "WMs" "$CONFIG_DIR"
+auto_symlink "wms" "$CONFIG_DIR"
 
 echo
 echo "All done! Dotilfes successfully GNU Stow."
