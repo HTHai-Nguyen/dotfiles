@@ -7,6 +7,7 @@
 
 if status is-interactive
     set -u fish_greeting "All Hail Kaid Hoang"
+    set -gx EDITOR nvim
 
     # PATH
     fish_add_path /usr/sbin
