@@ -124,7 +124,6 @@ eval "$(zoxide init zsh)"
 
 # Aliases common
  alias vi="nvim"
- alias vd="neovide"
  alias zshrc="nvim ~/.zshrc"
  alias zshrl='source ~/.zshrc'
  alias omzsh="nvim ~/.oh-my-zsh"
@@ -132,8 +131,9 @@ eval "$(zoxide init zsh)"
  alias lzg='lazygit'
  alias download='aria2c -x 16 -s 16'
  alias ..='cd ..'
- alias pd='popd'
+ alias cm='chezmoi'
  alias rm='trash'
+
 # eza 
  # alias ll="eza -l --icons=always --color=auto --color-scale=size --total-size --group-directories-last --no-permissions" 
  alias ll="eza -l --icons=always --total-size --group-directories-last" 

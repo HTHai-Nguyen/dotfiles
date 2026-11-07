@@ -1,0 +1,17 @@
+[language-server.marksman]
+command = "marksman"
+args = ["server"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman"]
+formatter = { command = "prettier", args = [
+  "--parser", "markdown",
+  "--prose-wrap", "always",
+  "--print-width", "80"
+] }
+auto-format = true
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 80
+
+

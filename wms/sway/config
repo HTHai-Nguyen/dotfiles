@@ -49,7 +49,7 @@ exec_always --no-startup-id dbus-update-activation-environment --systemd DBUS_SE
 exec_always --no-startup-id  nm-applet --indicator &
 exec_always export $fcitx_env &
 exec_always --no-startup-id fcitx5 &
-exec_always vicinae --daemon
+# exec_always --no-startup-id vicinae server &
 
 # Reload the configuration file
 bindsym $mod+Shift+r reload
@@ -79,15 +79,16 @@ for_window [title="^Picture in picture$"] floating enable, sticky enable, border
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+space exec $menu
-    # bindsym $mod+space exec $menu2
+    # bindsym $mod+space exec $menu
+    bindsym $mod+space exec $menu2
     bindsym $mod+v exec $clipboard
 
     # Open File Explorer (Dolphin)
     bindsym $mod+e exec dolphin
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+q exec 'swaymsg exit'
     # Shutdown
     bindsym $mod+Ctrl+x exec systemctl poweroff
 

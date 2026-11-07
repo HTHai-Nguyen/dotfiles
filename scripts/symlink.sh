@@ -60,7 +60,7 @@ auto_symlink() {
       else
         ignore_regex="$ignore_regex|^$pkg$"
       fi
-      echo "⏭ Ignoring $pkg (not installed)"
+      echo "⏭ Ignoring $pkg (not symlink)"
     else
       echo "✔ Including $pkg"
     fi
@@ -93,15 +93,28 @@ fi
 echo
 
 # keyboards: only kanata (fixed, not auto)
-KEYBOARD_DIR=$HOME/dotfiles
 echo "=====Stow keyboards====="
 if command -v kanata >/dev/null 2>&1; then
-  stow -D "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" >/dev/null 2>&1 || true
-  stow "keyboards" -d "$KEYBOARD_DIR" -t "$CONFIG_DIR" --ignore="config.kbd" --ignore="qmk"
+  stow -D "keyboards" -d "$DOTFILES_DIR" -t "$CONFIG_DIR" >/dev/null 2>&1 || true
+  stow "keyboards" -d "$DOTFILES_DIR" -t "$CONFIG_DIR" --ignore="config.kbd" --ignore="qmk"
   echo "Stowed keyboards/kanata → $CONFIG_DIR"
 else
   echo "keyboards/kanata missing → skipped"
 fi
+echo
+
+echo "=====Stow editors====="
+auto_symlink "editors" "$CONFIG_DIR"
+
+cd ~/dotfiles/editors/
+# neovim: select a distribution & uncomment it
+# stow -D kraft -d . -t "$CONFIG_DIR"
+# stow kraft -d . -t "$CONFIG_DIR"
+stow -D lazyvim -d . -t "$CONFIG_DIR"
+stow lazyvim -d . -t "$CONFIG_DIR"
+# stow -D nvchad -d . -t "$CONFIG_DIR"
+# stow nvchad -d . -t "$CONFIG_DIR"
+cd ~/dotfiles/
 echo
 
 # launchers
@@ -112,12 +125,6 @@ echo
 # multiplexers
 echo "=====Stow multiplexers====="
 auto_symlink "multiplexers" "$CONFIG_DIR"
-echo
-
-# neovim: select a distribution & uncomment it
-echo "=====Stow neovim/?====="
-# symlink "neomvim/lazyvim" "$CONFIG_DIR"
-# symlink "neomvim/nvchad" "$CONFIG_DIR"
 echo
 
 # statusbars
