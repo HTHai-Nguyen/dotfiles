@@ -1,7 +1,0 @@
---target=$HOME/.config 
-
-# ignore
---ignore=.stowrc
---ignore=windows
---ignore=scripts
---ignore=keyboards

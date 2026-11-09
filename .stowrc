@@ -1,9 +1,0 @@
-## Config for stow
---target=$HOME/.config
---verbose=2
-
-## Ignore modules in dotfilies
---ignore=.stowrc
---ignore=neovim
---ignore=windows
---ignore=scripts
