@@ -107,6 +107,7 @@ fi
 
 # Adjustment size for fzf window
 export FZF_DEFAULT_OPTS="--height=40% --min-height=10 --layout=reverse --border"
+FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
 
 # -------------------------------
 # 🔗 Load Aliases files

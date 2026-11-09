@@ -3,8 +3,7 @@
 # Run `ghostty +show-config --default --docs` to view a list of
 # all available config options and their default values.
 #
-# Ghostty can reload the configuration while running by using the menu
-# options or the bound key (default: Command + Shift + comma on macOS and
+# Reload the configuration (default: Command + Shift + comma on macOS and
 # Control + Shift + comma on other platforms).
 
 ### Shell 
@@ -12,7 +11,7 @@ command = /usr/bin/zsh
 shell-integration = detect
 
 ### Appearance
-# theme = TokyoNight Storm
+theme = TokyoNight Night
 font-size = 13
 font-family = FiraCodeNerdFont-Regular
 background-opacity = 0.8
@@ -26,14 +25,32 @@ window-decoration = false
 window-padding-x = 3
 window-padding-y = 3
 
-### Cursors 
+### Cursors
 # cursor-opacity = 0
 
 ### Shaders
 custom-shader = ~/.config/ghostty/shaders/cursor_smear.glsl
-custom-shader-animation = true
+# custom-shader = ~/.config/ghostty/shaders/cursor_sweep.glsl
+custom-shader-animation = always
 
-# # Empty values are used to reset config keys to default.
-# key =
-#
+### Keybinds
+## Split 
+keybind = ctrl+shift+\=new_split:right
+keybind = ctrl+shift+;=new_split:down
+keybind = alt+h=goto_split:left
+keybind = alt+l=goto_split:right
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
+keybind = ctrl+d=close_surface
+keybind = ctrl+alt+left=resize_split:left,5
+keybind = ctrl+alt+right=resize_split:right,5
+keybind = ctrl+alt+down=resize_split:down,5
+keybind = ctrl+alt+up=resize_split:up,5
+
+## Tab
+keybind = ctrl+shift+h=previous_tab
+keybind = ctrl+shift+l=next_tab
+keybind = ctrl+shift+,=move_tab:-1
+keybind = ctrl+shift+.=move_tab:1
+
 # resize-overlay-duration = 4s 200ms
